@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/nav_header_height"
+    android:orientation="vertical"
+    android:gravity="bottom"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
+    android:paddingBottom="8dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/profile_pic_circle"
+        android:layout_marginBottom="12dp"
+        android:contentDescription="@string/todo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_name"
+        android:layout_marginBottom="4dp"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_profile"
+        android:layout_marginBottom="4dp"/>
+
+</LinearLayout>

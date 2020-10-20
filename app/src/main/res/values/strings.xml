@@ -3,4 +3,7 @@
     <string name="menu">Menu</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="profile_name">Profile Name</string>
+    <string name="view_profile">View Profile</string>
+    <string name="todo">TODO</string>
 </resources>
