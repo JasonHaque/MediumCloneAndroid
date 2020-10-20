@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/item1"
-        android:title="Home"/>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_audio"
+            android:title="@string/menu_audio" />
+        <item
+            android:id="@+id/nav_reading_list"
+            android:title="@string/menu_reading_list" />
+        <item
+            android:id="@+id/nav_interest"
+            android:title="@string/menu_interest"/>
+    </group>
 
-    <item
-        android:id="@+id/item2"
-        android:title="Audio"/>
-
-    <item
-        android:id="@+id/item3"
-        android:title="Interests"/>
 </menu>
