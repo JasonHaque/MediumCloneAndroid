@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
@@ -24,7 +25,7 @@
         tools:layout="@layout/fragment_bookmarks" />
 
     <fragment
-        android:id="@+id/nav_interest"
+        android:id="@+id/nav_interests"
         android:name="com.example.mediumcloneandroid.ui.interests.InterestsFragment"
         android:label="@string/menu_interest"
         tools:layout="@layout/fragment_interests"/>

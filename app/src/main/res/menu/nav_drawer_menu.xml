@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
@@ -9,10 +11,10 @@
             android:id="@+id/nav_audio"
             android:title="@string/menu_audio" />
         <item
-            android:id="@+id/nav_reading_list"
+            android:id="@+id/nav_bookmarks"
             android:title="@string/menu_bookmarks" />
         <item
-            android:id="@+id/nav_interest"
+            android:id="@+id/nav_interests"
             android:title="@string/menu_interest"/>
     </group>
 
