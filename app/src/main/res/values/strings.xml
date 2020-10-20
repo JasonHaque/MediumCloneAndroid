@@ -5,10 +5,12 @@
     <string name="close">Close</string>
     <string name="profile_name">Profile Name</string>
     <string name="view_profile">View Profile</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
     <string name="todo">TODO</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_home">Home</string>
     <string name="menu_audio">Audio</string>
-    <string name="menu_reading_list">Reading List</string>
+    <string name="menu_bookmarks">Bookmarks</string>
     <string name="menu_interest">Interest</string>
 </resources>

@@ -5,6 +5,7 @@
     android:layout_height="@dimen/nav_header_height"
     android:orientation="vertical"
     android:gravity="bottom"
+    android:background="@android:color/white"
     android:paddingTop="16dp"
     android:paddingEnd="16dp"
     android:paddingStart="16dp"

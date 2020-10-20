@@ -1,4 +1,4 @@
-package com.example.mediumcloneandroid.ui
+package com.example.mediumcloneandroid.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -10,7 +10,7 @@
             android:title="@string/menu_audio" />
         <item
             android:id="@+id/nav_reading_list"
-            android:title="@string/menu_reading_list" />
+            android:title="@string/menu_bookmarks" />
         <item
             android:id="@+id/nav_interest"
             android:title="@string/menu_interest"/>
