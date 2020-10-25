@@ -25,8 +25,8 @@ class SignUpActivity : AppCompatActivity() {
         sign_up_button.setOnClickListener {
 
             val username = username_field.text.toString()
-            val email = email_field.text.toString()
-            val password = password_field.text.toString()
+            val email = email_field_sign_up.text.toString()
+            val password = password_field_sign_up.text.toString()
             val confirmPassword = confirm_password_field.text.toString()
 
             if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || username.isEmpty()) {

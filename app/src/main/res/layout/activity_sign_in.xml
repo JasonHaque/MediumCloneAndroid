@@ -16,4 +16,37 @@
         android:textColor="@android:color/black"
         android:textSize="54sp"/>
 
+    <EditText
+        android:id="@+id/email_field_sign_in"
+        android:layout_width="@dimen/field_box"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:hint="@string/email"
+        android:layout_gravity="center"
+        android:textSize="24sp"
+        android:autofillHints=""
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/password_field_sign_in"
+        android:layout_width="@dimen/field_box"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/password"
+        android:layout_gravity="center"
+        android:textSize="24sp"
+        android:autofillHints=""
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/sign_in_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_marginTop="32dp"
+        android:layout_gravity="center"
+        android:background="@android:color/white"/>
+
 </LinearLayout>

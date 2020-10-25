@@ -29,7 +29,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/email_field"
+        android:id="@+id/email_field_sign_up"
         android:layout_width="@dimen/field_box"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -40,7 +40,7 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/password_field"
+        android:id="@+id/password_field_sign_up"
         android:layout_width="@dimen/field_box"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
