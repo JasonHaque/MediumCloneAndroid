@@ -8,11 +8,12 @@
     tools:context=".signin_signup.SignUpActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_up"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         android:textAlignment="center"
+        android:layout_gravity="center"
         android:textColor="@android:color/black"
         android:textSize="54sp"/>
 
@@ -20,7 +21,7 @@
         android:id="@+id/username_field"
         android:layout_width="@dimen/field_box"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="32dp"
         android:hint="@string/username"
         android:layout_gravity="center"
         android:textSize="24sp"

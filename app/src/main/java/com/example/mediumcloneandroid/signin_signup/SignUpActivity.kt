@@ -3,12 +3,9 @@ package com.example.mediumcloneandroid.signin_signup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import com.example.mediumcloneandroid.MainUi
 import com.example.mediumcloneandroid.R
-import com.google.android.gms.common.internal.Objects
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_sign_up.*
 

@@ -7,21 +7,23 @@
     tools:context=".signin_signup.MainActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/medium"
         android:textSize="38sp"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="48dp"
         android:textColor="@android:color/black"
+        android:layout_gravity="center"
         android:textAlignment="center"/>
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="@string/join_medium"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="28dp"
         android:textSize="52sp"
+        android:layout_gravity="center"
         android:textColor="@android:color/black"/>
 
     <Button
@@ -53,11 +55,12 @@
         android:layout_gravity="center"/>
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="@string/or"
         android:textSize="24sp"
+        android:layout_gravity="center"
         android:layout_marginTop="16dp"/>
 
     <Button
@@ -71,14 +74,16 @@
         android:layout_gravity="center"/>
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
         android:text="@string/Long_boi"
         android:textAlignment="center"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="36dp"
         android:textColorLink="@android:color/holo_blue_bright"/>
 
 </LinearLayout>
