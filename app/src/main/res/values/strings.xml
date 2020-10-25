@@ -13,4 +13,12 @@
     <string name="menu_audio">Audio</string>
     <string name="menu_bookmarks">Bookmarks</string>
     <string name="menu_interest">Interest</string>
+    <string name="medium">Medium</string>
+    <string name="join_medium">Join Medium.</string>
+    <string name="sign_up_with_email">Sign up with email</string>
+    <string name="or">Or,</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up_with_google">Sign up with Google</string>
+    <string name="sign_up_with_facebook">Sign up with Facebook</string>
+    <string name="Long_boi">By signing up, you agree to our Terms of Service and acknowledge that our Privacy Policy applices to you.</string>
 </resources>

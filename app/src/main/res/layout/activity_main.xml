@@ -1,14 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".signin_signup.MainActivity">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="SignUp"/>
+        android:layout_height="wrap_content"
+        android:text="@string/medium"
+        android:textSize="38sp"
+        android:layout_marginTop="54dp"
+        android:textColor="@android:color/black"
+        android:textAlignment="center"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/join_medium"
+        android:layout_marginTop="50dp"
+        android:textSize="52sp"
+        android:textColor="@android:color/black"/>
+
+    <Button
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/sign_up_with_google"
+        android:background="@android:color/white"
+        android:textAlignment="center"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/sign_up_with_facebook"
+        android:background="@android:color/white"
+        android:textAlignment="center"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/sign_up_with_email"
+        android:background="@android:color/white"
+        android:textAlignment="center"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/or"
+        android:textSize="24sp"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/sign_in"
+        android:background="@android:color/white"
+        android:textAlignment="center"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="64dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="@string/Long_boi"
+        android:textAlignment="center"
+        android:textColorLink="@android:color/holo_blue_bright"/>
+
+</LinearLayout>
