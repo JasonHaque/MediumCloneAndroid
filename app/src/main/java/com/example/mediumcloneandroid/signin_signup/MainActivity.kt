@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mediumcloneandroid.MainUi
 import com.example.mediumcloneandroid.R
-import com.example.mediumcloneandroid.signin_signup.ui.login.SignInActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
