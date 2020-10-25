@@ -17,10 +17,21 @@
         android:textSize="54sp"/>
 
     <EditText
-        android:id="@+id/email_field"
+        android:id="@+id/username_field"
         android:layout_width="@dimen/field_box"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
+        android:hint="@string/username"
+        android:layout_gravity="center"
+        android:textSize="24sp"
+        android:autofillHints=""
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/email_field"
+        android:layout_width="@dimen/field_box"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:hint="@string/email"
         android:layout_gravity="center"
         android:textSize="24sp"
@@ -33,6 +44,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="@string/password"
+        android:layout_gravity="center"
+        android:textSize="24sp"
+        android:autofillHints=""
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:id="@+id/confirm_password_field"
+        android:layout_width="@dimen/field_box"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/confirm_password"
         android:layout_gravity="center"
         android:textSize="24sp"
         android:autofillHints=""

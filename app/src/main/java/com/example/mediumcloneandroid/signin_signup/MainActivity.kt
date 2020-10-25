@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mediumcloneandroid.MainUi
 import com.example.mediumcloneandroid.R
+import com.example.mediumcloneandroid.signin_signup.ui.login.SignInActivity
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +21,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun bindListeners() {
 
+        sign_up_with_email.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
+        }
+
+        sign_in.setOnClickListener {
+            startActivity(Intent(this, SignInActivity::class.java))
+        }
     }
 
     private fun checkAuthStatus() {
