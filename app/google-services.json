@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "932838149412",
+    "firebase_url": "https://medium-clone-android.firebaseio.com",
+    "project_id": "medium-clone-android",
+    "storage_bucket": "medium-clone-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932838149412:android:c890114a05eb0cfec8b7b1",
+        "android_client_info": {
+          "package_name": "com.example.mediumcloneandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932838149412-eksk1bbi4bb5c66rj3tbejd9ijmevmea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSnBDDqKpIFmobxakHlWZ6i_DL6fOVpT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "932838149412-eksk1bbi4bb5c66rj3tbejd9ijmevmea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

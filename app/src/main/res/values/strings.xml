@@ -21,4 +21,7 @@
     <string name="sign_up_with_google">Sign up with Google</string>
     <string name="sign_up_with_facebook">Sign up with Facebook</string>
     <string name="Long_boi">By signing up, you agree to our Terms of Service and acknowledge that our Privacy Policy applices to you.</string>
+    <string name="email">Email</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="password">Password</string>
 </resources>
