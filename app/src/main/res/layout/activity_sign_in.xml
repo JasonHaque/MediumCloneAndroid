@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sign_in"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="48dp"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="54sp"/>
@@ -23,7 +23,7 @@
         android:layout_marginTop="32dp"
         android:hint="@string/email"
         android:layout_gravity="center"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:autofillHints=""
         android:inputType="textEmailAddress" />
 
@@ -34,18 +34,17 @@
         android:layout_marginTop="8dp"
         android:hint="@string/password"
         android:layout_gravity="center"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:autofillHints=""
         android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/sign_in_button"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
         android:text="@string/sign_in"
-        android:textSize="18sp"
         android:textAlignment="center"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_gravity="center"
         android:background="@android:color/white"/>
 
