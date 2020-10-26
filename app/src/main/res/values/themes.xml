@@ -21,7 +21,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.NavDrawerTest.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.NavDrawerTest.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimary">@android:color/black</item>
+    </style>
 
     <style name="Theme.NavDrawerTest.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

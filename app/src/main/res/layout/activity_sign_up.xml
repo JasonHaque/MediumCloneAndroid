@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_up"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="48dp"
         android:textAlignment="center"
         android:layout_gravity="center"
         android:textColor="@android:color/black"
@@ -24,7 +24,7 @@
         android:layout_marginTop="32dp"
         android:hint="@string/username"
         android:layout_gravity="center"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:autofillHints=""
         android:inputType="textPersonName" />
 
@@ -35,7 +35,7 @@
         android:layout_marginTop="8dp"
         android:hint="@string/email"
         android:layout_gravity="center"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:autofillHints=""
         android:inputType="textEmailAddress" />
 
@@ -46,7 +46,7 @@
         android:layout_marginTop="8dp"
         android:hint="@string/password"
         android:layout_gravity="center"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:autofillHints=""
         android:inputType="textPassword"/>
 
@@ -57,18 +57,17 @@
         android:layout_marginTop="8dp"
         android:hint="@string/confirm_password"
         android:layout_gravity="center"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:autofillHints=""
         android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/sign_up_button"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
         android:text="@string/sign_up"
-        android:textSize="18sp"
         android:textAlignment="center"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_gravity="center"
         android:background="@android:color/white"/>
 

@@ -1,5 +1,6 @@
 package com.example.mediumcloneandroid
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -11,7 +12,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.mediumcloneandroid.ui.UserProfileActivity
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainUi : AppCompatActivity() {
 
@@ -32,6 +35,8 @@ class MainUi : AppCompatActivity() {
             R.id.nav_home, R.id.nav_audio, R.id.nav_bookmarks, R.id.nav_interests), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        bindListeners()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -42,5 +47,12 @@ class MainUi : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    private fun bindListeners() {
+
+        nav_profile_header.setOnClickListener {
+            startActivity(Intent(this, UserProfileActivity::class.java))
+        }
     }
 }
