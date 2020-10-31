@@ -27,6 +27,7 @@
         android:textColor="@android:color/black"/>
 
     <Button
+        android:id="@+id/sign_in_with_google"
         android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -36,6 +37,7 @@
         android:layout_gravity="center"/>
 
     <Button
+        android:id="@+id/sign_in_with_facebook"
         android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

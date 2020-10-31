@@ -22,13 +22,7 @@
         <activity android:name=".ui.UserProfileActivity" />
         <activity android:name=".signin_signup.SignInActivity" />
         <activity android:name=".signin_signup.SignUpActivity" />
-        <activity android:name=".signin_signup.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".signin_signup.MainActivity"/>
         <activity android:name=".ui.MainUi" />
     </application>
 
