@@ -43,8 +43,6 @@ class MainUi : AppCompatActivity() {
 
     }
 
-    override fun onBackPressed() {}
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
         return true
