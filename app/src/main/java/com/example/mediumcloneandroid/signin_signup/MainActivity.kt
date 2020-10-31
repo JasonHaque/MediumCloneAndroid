@@ -20,8 +20,6 @@ class MainActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         val user = mAuth.currentUser
 
-        checkAuthStatus(user)
-
         bindListeners()
     }
 
@@ -33,12 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         sign_in.setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))
-        }
-    }
-
-    private fun checkAuthStatus(user: FirebaseUser?) {
-        if (user != null) {
-            startActivity(Intent(this, MainUi::class.java))
         }
     }
 }
