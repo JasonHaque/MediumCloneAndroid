@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context=".MainUi">
+    tools:context=".ui.MainUi">
 
     <include
         layout="@layout/app_bar_main"
@@ -24,6 +24,7 @@
         app:menu="@menu/nav_drawer_menu"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="0dp"
+        android:paddingTop="0dp"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"/>
 

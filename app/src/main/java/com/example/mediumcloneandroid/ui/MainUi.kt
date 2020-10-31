@@ -1,4 +1,4 @@
-package com.example.mediumcloneandroid
+package com.example.mediumcloneandroid.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +12,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.mediumcloneandroid.ui.UserProfileActivity
+import com.example.mediumcloneandroid.R
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.nav_header_main.*
 
@@ -32,11 +32,11 @@ class MainUi : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.nav_home, R.id.nav_audio, R.id.nav_bookmarks, R.id.nav_interests), drawerLayout)
+            R.id.nav_home, R.id.nav_audio, R.id.nav_bookmarks, R.id.nav_interests
+        ), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        bindListeners()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -47,12 +47,5 @@ class MainUi : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
-
-    private fun bindListeners() {
-
-        nav_profile_header.setOnClickListener {
-            startActivity(Intent(this, UserProfileActivity::class.java))
-        }
     }
 }
