@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var callbackManager: CallbackManager
-    private lateinit var binding: LoginButton
+    private lateinit var binding: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,8 +103,6 @@ class MainActivity : AppCompatActivity() {
                 Log.w("MainActivity", exception.toString())
             }
         }
-
-        super.onActivityResult(requestCode, resultCode, data)
 
         // Pass the activity result back to the Facebook SDK
         callbackManager.onActivityResult(requestCode, resultCode, data)
