@@ -26,8 +26,6 @@ class MainUi : AppCompatActivity() {
         setContentView(R.layout.ui_main)
 
 
-        setStatusBarColor()
-
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -53,10 +51,4 @@ class MainUi : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    private fun setStatusBarColor() {
-        val window: Window = this.window
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = ContextCompat.getColor(this,R.color.black)
-    }
 }
