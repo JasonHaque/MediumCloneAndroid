@@ -103,6 +103,12 @@ class MainActivity : AppCompatActivity() {
                 Log.w("MainActivity", exception.toString())
             }
         }
+
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Pass the activity result back to the Facebook SDK
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
