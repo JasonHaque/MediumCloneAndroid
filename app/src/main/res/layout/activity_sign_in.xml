@@ -1,51 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@android:color/black"
     tools:context=".signin_signup.SignInActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sign_in"
-        android:layout_marginTop="48dp"
         android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="54sp"/>
+        android:textColor="@android:color/white"
+        android:textSize="54sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141" />
 
     <EditText
         android:id="@+id/email_field_sign_in"
         android:layout_width="@dimen/field_box"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:hint="@string/email"
         android:layout_gravity="center"
-        android:textSize="16sp"
+        android:textColorHint="@android:color/darker_gray"
+        android:backgroundTint="@android:color/white"
+        android:layout_marginTop="16dp"
         android:autofillHints=""
-        android:inputType="textEmailAddress" />
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/password_field_sign_in"
         android:layout_width="@dimen/field_box"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="@string/password"
         android:layout_gravity="center"
-        android:textSize="16sp"
+        android:textColorHint="@android:color/darker_gray"
+        android:backgroundTint="@android:color/white"
         android:autofillHints=""
-        android:inputType="textPassword"/>
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.137" />
 
     <Button
         android:id="@+id/sign_in_button"
         android:layout_width="100dp"
         android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="372dp"
+        android:background="@drawable/button_border"
+        android:textColor="@android:color/white"
         android:text="@string/sign_in"
         android:textAlignment="center"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center"
-        android:background="@android:color/white"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.899" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
