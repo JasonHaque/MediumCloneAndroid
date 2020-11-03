@@ -99,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_with_email"
-        app:layout_constraintVertical_bias="0.581" />
+        app:layout_constraintVertical_bias="0.511" />
 
     <Button
         android:id="@+id/sign_in"
