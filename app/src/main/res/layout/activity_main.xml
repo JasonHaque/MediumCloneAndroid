@@ -17,13 +17,13 @@
         android:text="@string/medium"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="38sp"
+        android:textSize="42sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.098" />
+        app:layout_constraintVertical_bias="0.104" />
 
     <TextView
         android:id="@+id/textView3"
@@ -118,8 +118,8 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="384dp"
-        android:layout_height="69dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/Long_boi"
         android:textAlignment="center"
