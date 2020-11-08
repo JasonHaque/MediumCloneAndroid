@@ -57,7 +57,6 @@ class MainActivity : AppCompatActivity() {
 
         bindListeners()
 
-
     }
 
     private fun bindListeners() {

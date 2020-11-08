@@ -28,4 +28,6 @@
     <string name="username">Username</string>
     <string name="facebook_app_id">4055082944535098</string>
     <string name="fb_login_protocol_scheme">fb4055082944535098</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
 </resources>

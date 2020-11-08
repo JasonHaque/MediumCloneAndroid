@@ -27,12 +27,11 @@ class SignUpActivity : AppCompatActivity() {
 
         sign_up_button.setOnClickListener {
 
-            val username = username_field.text.toString()
             val email = email_field_sign_up.text.toString()
             val password = password_field_sign_up.text.toString()
             val confirmPassword = confirm_password_field.text.toString()
 
-            if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || username.isEmpty()) {
+            if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(this, "Fields are not properly filled up", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -42,18 +41,18 @@ class SignUpActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            signUpUser(email, password, username)
+            signUpUser(email, password)
         }
     }
 
-    private fun signUpUser(textEmail: String, textPassword: String, textUsername: String) {
+    private fun signUpUser(textEmail: String, textPassword: String) {
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(textEmail, textPassword).addOnSuccessListener {
-            Toast.makeText(this, "Successfully created User: $textUsername", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Successfully created User", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, MainUi::class.java))
 
         }.addOnFailureListener {
-            Toast.makeText(this, "Failed to create User: $textUsername", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Failed to create User", Toast.LENGTH_SHORT).show()
             return@addOnFailureListener
 
         }
