@@ -46,7 +46,7 @@ class MainUi : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        setProfileCredentials()
+//        setProfileCredentials()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -59,10 +59,10 @@ class MainUi : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    private fun setProfileCredentials() {
-        val user: FirebaseUser? = mAuth.currentUser
-
-        profile_name_header.text = user?.displayName
-        Glide.with(this).load(user?.photoUrl).into(display_picture_header)
-    }
+//    private fun setProfileCredentials() {
+//        val user: FirebaseUser? = mAuth.currentUser
+//
+//        profile_name_header.text = user?.displayName
+//        Glide.with(this).load(user?.photoUrl).into(display_picture_header)
+//    }
 }
