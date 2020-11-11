@@ -27,6 +27,7 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
+    // On button clicks
     private fun bindListeners() {
 
         sign_up_button.setOnClickListener {
@@ -56,12 +57,7 @@ class SignUpActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(textEmail, textPassword).addOnSuccessListener {
             Toast.makeText(this, "Successfully created User", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, MainUi::class.java))
-
-            val user = UserData(firstName, lastName)
-            val ref = FirebaseDatabase.getInstance().reference
-            ref.child("Users/$textEmail").setValue(user).addOnSuccessListener {
-                Log.i("SignUpActivity", "Data saved" )
-            }.addOnFailureListener { Log.i("SignUpActivity", "Failed to save data") }
+            dataQuery(firstName, lastName, textEmail)
 
         }.addOnFailureListener {
             Toast.makeText(this, "Failed to create User", Toast.LENGTH_SHORT).show()
@@ -70,5 +66,13 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+    // Add data to firebase
+    private fun dataQuery(firstName: String, lastName: String, textEmail: String) {
+        val user = UserData(firstName, lastName)
+        val ref = FirebaseDatabase.getInstance().reference.child("users")
+        ref.child(textEmail).push().setValue(user).addOnSuccessListener {
+            Log.i("SignUpActivity", "Data saved" )
+        }.addOnFailureListener { Log.i("SignUpActivity", "Failed to save data") }
+    }
 
 }
