@@ -2,8 +2,11 @@ package com.example.mediumcloneandroid.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.example.mediumcloneandroid.R
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_user_profile.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 class UserProfileActivity : AppCompatActivity() {
 
@@ -20,7 +23,12 @@ class UserProfileActivity : AppCompatActivity() {
     }
 
     private fun setProfileCredentials() {
-        var user = auth.currentUser
+        val user = auth.currentUser
+
+        val name = user?.displayName.toString()
+        if (name == "") {
+            user_name.text = getString(R.string.profile_name)
+        } else {user_name.text = name}
 
     }
 }

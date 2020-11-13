@@ -20,11 +20,11 @@
         android:contentDescription="@string/idk" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="This Is Your Profile"
+        android:text="@string/profile_name"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="32sp"
