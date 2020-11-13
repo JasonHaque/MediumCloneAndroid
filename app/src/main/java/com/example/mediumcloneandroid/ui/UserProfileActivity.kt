@@ -30,5 +30,8 @@ class UserProfileActivity : AppCompatActivity() {
             user_name.text = getString(R.string.profile_name)
         } else {user_name.text = name}
 
+        val email = user?.email.toString()
+        email_feild.text = email
+
     }
 }

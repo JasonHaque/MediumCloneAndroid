@@ -22,6 +22,7 @@ import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -75,18 +76,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signIn() {
-        val mUser = mAuth.currentUser
-        val userEmail = mUser?.email
-        val name = mUser?.displayName?.split(" ")
-        val firstName = name?.get(0)
-        val lastName = name?.get(0)
+
         val signInIntent = googleSignInClient.signInIntent
-
-        if (userEmail != null && firstName != null && lastName != null) {
-            dataQuery(firstName, lastName, userEmail)
-        }
-
         startActivityForResult(signInIntent, RC_SIGN_IN)
+
+        val mUser = mAuth.currentUser
+        val userEmail = mUser?.email.toString()
+        val name = mUser?.displayName.toString()
+        val firstName: String
+        val lastName: String
+        if (name.length > 1) {
+            name.split(" ")
+            firstName = name[0].toString()
+            lastName = name[1].toString()
+        } else {
+            firstName = "First"
+            lastName = "Last"
+        }
+        dataQuery(firstName, lastName, userEmail)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -184,8 +191,8 @@ class MainActivity : AppCompatActivity() {
         val user = UserData(firstName, lastName)
         val ref = FirebaseDatabase.getInstance().reference.child("users")
         ref.child(emailName).push().setValue(user).addOnSuccessListener {
-            Log.i("SignUpActivity", "Data saved" )
-        }.addOnFailureListener { Log.i("SignUpActivity", "Failed to save data") }
+            Log.i("MainActivity", "Data saved" )
+        }.addOnFailureListener { Log.i("MainActivity", "Failed to save data") }
     }
 
     private fun updateUI(user: FirebaseUser?) {

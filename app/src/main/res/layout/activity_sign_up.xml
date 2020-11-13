@@ -25,6 +25,7 @@
         app:layout_constraintVertical_bias="0.13" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="@dimen/field_box"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -40,29 +41,29 @@
             android:id="@+id/first_name"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_gravity="center"
-            android:textColor="@android:color/white"
+            android:layout_weight="1"
             android:autofillHints=""
             android:backgroundTint="@android:color/white"
             android:hint="@string/firstname"
             android:inputType="textPersonName"
+            android:textColor="@android:color/white"
             android:textColorHint="@android:color/darker_gray"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/last_name"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_gravity="center"
-            android:textColor="@android:color/white"
+            android:layout_weight="1"
             android:autofillHints=""
             android:backgroundTint="@android:color/white"
             android:hint="@string/lastname"
             android:inputType="textPersonName"
+            android:textColor="@android:color/white"
             android:textColorHint="@android:color/darker_gray"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -71,11 +72,11 @@
         android:layout_width="@dimen/field_box"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@android:color/white"
         android:autofillHints=""
         android:backgroundTint="@android:color/white"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
+        android:textColor="@android:color/white"
         android:textColorHint="@android:color/darker_gray"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,18 +84,18 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.345" />
+        app:layout_constraintVertical_bias="0.356" />
 
     <EditText
         android:id="@+id/password_field_sign_up"
         android:layout_width="@dimen/field_box"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@android:color/white"
         android:autofillHints=""
         android:backgroundTint="@android:color/white"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:textColor="@android:color/white"
         android:textColorHint="@android:color/darker_gray"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -102,25 +103,26 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.420" />
+        app:layout_constraintVertical_bias="0.436" />
 
     <EditText
         android:id="@+id/confirm_password_field"
         android:layout_width="@dimen/field_box"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@android:color/white"
         android:autofillHints=""
         android:backgroundTint="@android:color/white"
         android:hint="@string/confirm_password"
         android:inputType="textPassword"
+        android:textColor="@android:color/white"
         android:textColorHint="@android:color/darker_gray"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.513" />
 
     <Button
         android:id="@+id/sign_up_button"
@@ -128,13 +130,15 @@
         android:layout_height="45dp"
         android:layout_gravity="center"
         android:layout_marginBottom="264dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_border"
         android:text="@string/sign_up"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirm_password_field"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
