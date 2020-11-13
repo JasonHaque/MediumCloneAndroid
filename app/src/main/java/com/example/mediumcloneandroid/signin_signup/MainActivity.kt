@@ -80,20 +80,6 @@ class MainActivity : AppCompatActivity() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
 
-        val mUser = mAuth.currentUser
-        val userEmail = mUser?.email.toString()
-        val name = mUser?.displayName.toString()
-        val firstName: String
-        val lastName: String
-        if (name.length > 1) {
-            name.split(" ")
-            firstName = name[0].toString()
-            lastName = name[1].toString()
-        } else {
-            firstName = "First"
-            lastName = "Last"
-        }
-        dataQuery(firstName, lastName, userEmail)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -134,6 +120,12 @@ class MainActivity : AppCompatActivity() {
                     Log.d("MainActivity", "signInWithCredential:success")
                     startActivity(Intent(this, MainUi::class.java))
                     finish()
+                    val mUser = mAuth.currentUser
+                    val userEmail = mUser?.email.toString()
+                    val name = mUser?.displayName.toString().split(" ")
+                    val firstName = name[0]
+                    val lastName = name[1]
+                    dataQuery(firstName, lastName, userEmail)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("MainActivity", "signInWithCredential:failure", task.exception)
