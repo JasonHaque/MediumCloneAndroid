@@ -21,6 +21,7 @@ import com.example.mediumcloneandroid.R
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.activity_user_profile.*
 import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainUi : AppCompatActivity() {
@@ -71,10 +72,14 @@ class MainUi : AppCompatActivity() {
         }
     }
 
-//    private fun setProfileCredentials() {
-//        val user: FirebaseUser? = mAuth.currentUser
-//
-//        profile_name_header.text = user?.displayName
-//        Glide.with(this).load(user?.photoUrl).into(display_picture_header)
-//    }
+    private fun setProfileCredentials() {
+        val user = mAuth.currentUser
+
+        val name = user?.displayName.toString()
+        if (name == "") {
+            profile_name_header.text = getString(R.string.profile_name)
+        } else {
+            profile_name_header.text = name
+        }
+    }
 }

@@ -11,7 +11,7 @@
         android:layout_width="148dp"
         android:layout_height="141dp"
         android:background="@drawable/profile_pic_circle"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintBottom_toTopOf="@+id/user_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

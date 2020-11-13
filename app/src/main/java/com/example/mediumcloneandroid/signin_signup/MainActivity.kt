@@ -82,12 +82,8 @@ class MainActivity : AppCompatActivity() {
         val lastName = name?.get(0)
         val signInIntent = googleSignInClient.signInIntent
 
-        if (userEmail != null) {
-            if (lastName != null) {
-                if (firstName != null) {
-                    dataQuery(firstName, lastName, userEmail)
-                }
-            }
+        if (userEmail != null && firstName != null && lastName != null) {
+            dataQuery(firstName, lastName, userEmail)
         }
 
         startActivityForResult(signInIntent, RC_SIGN_IN)
