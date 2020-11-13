@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.Toast
 import com.example.mediumcloneandroid.ui.MainUi
 import com.example.mediumcloneandroid.R
+import com.example.mediumcloneandroid.data.UserData
 import com.facebook.*
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -16,11 +17,10 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_main.*
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult
-import com.facebook.login.widget.LoginButton
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MainActivity : AppCompatActivity() {
@@ -75,7 +75,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signIn() {
+        val mUser = mAuth.currentUser
+        val userEmail = mUser?.email
+        val name = mUser?.displayName?.split(" ")
+        val firstName = name?.get(0)
+        val lastName = name?.get(0)
         val signInIntent = googleSignInClient.signInIntent
+
+        if (userEmail != null) {
+            if (lastName != null) {
+                if (firstName != null) {
+                    dataQuery(firstName, lastName, userEmail)
+                }
+            }
+        }
+
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
@@ -166,6 +180,16 @@ class MainActivity : AppCompatActivity() {
 
                 // ...
             }
+    }
+
+    private fun dataQuery(firstName: String, lastName: String, textEmail: String) {
+        val mailSplitter = textEmail.split("@")
+        val emailName = mailSplitter[0]
+        val user = UserData(firstName, lastName)
+        val ref = FirebaseDatabase.getInstance().reference.child("users")
+        ref.child(emailName).push().setValue(user).addOnSuccessListener {
+            Log.i("SignUpActivity", "Data saved" )
+        }.addOnFailureListener { Log.i("SignUpActivity", "Failed to save data") }
     }
 
     private fun updateUI(user: FirebaseUser?) {
