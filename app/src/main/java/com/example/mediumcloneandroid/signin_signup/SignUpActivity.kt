@@ -68,9 +68,11 @@ class SignUpActivity : AppCompatActivity() {
 
     // Add data to firebase
     private fun dataQuery(firstName: String, lastName: String, textEmail: String) {
+        val mailSplitter = textEmail.split("@")
+        val emailName = mailSplitter[0]
         val user = UserData(firstName, lastName)
         val ref = FirebaseDatabase.getInstance().reference.child("users")
-        ref.child(textEmail).push().setValue(user).addOnSuccessListener {
+        ref.child(emailName).push().setValue(user).addOnSuccessListener {
             Log.i("SignUpActivity", "Data saved" )
         }.addOnFailureListener { Log.i("SignUpActivity", "Failed to save data") }
     }
