@@ -24,14 +24,16 @@ class UserProfileActivity : AppCompatActivity() {
 
     private fun setProfileCredentials() {
         val user = auth.currentUser
-
         val name = user?.displayName.toString()
+        val email = user?.email.toString()
+
         if (name == "") {
             user_name.text = getString(R.string.profile_name)
         } else {user_name.text = name}
 
-        val email = user?.email.toString()
         email_feild.text = email
+
+        Glide.with(this).load(user?.photoUrl).into(profile_photo)
 
     }
 }

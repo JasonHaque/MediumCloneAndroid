@@ -7,17 +7,31 @@
     android:layout_height="match_parent"
     tools:context=".ui.UserProfileActivity">
 
-    <ImageView
-        android:layout_width="148dp"
-        android:layout_height="141dp"
-        android:background="@drawable/profile_pic_circle"
+<!--    <ImageView-->
+<!--        android:id="@+id/profile_photo"-->
+<!--        android:layout_width="148dp"-->
+<!--        android:layout_height="148dp"-->
+<!--        android:background="@drawable/img"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/user_name"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.49"-->
+<!--        android:contentDescription="@string/idk" />-->
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/profile_photo"
+        android:layout_width="225dp"
+        android:layout_height="225dp"
+        app:civ_border_color="@android:color/black"
+        app:civ_border_width="4dp"
         app:layout_constraintBottom_toTopOf="@+id/user_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.49"
-        android:contentDescription="@string/idk" />
+        app:layout_constraintVertical_bias="0.49"/>
 
     <TextView
         android:id="@+id/user_name"
