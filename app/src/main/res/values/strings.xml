@@ -31,4 +31,5 @@
     <string name="firstname">First Name</string>
     <string name="lastname">Last Name</string>
     <string name="idk">Display Picture for the user profile activity</string>
+    <string name="Sign_out">Sign Out</string>
 </resources>

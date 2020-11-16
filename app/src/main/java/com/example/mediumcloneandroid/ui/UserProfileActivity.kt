@@ -1,9 +1,11 @@
 package com.example.mediumcloneandroid.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.example.mediumcloneandroid.R
+import com.example.mediumcloneandroid.signin_signup.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_user_profile.*
 import kotlinx.android.synthetic.main.nav_header_main.*
@@ -20,6 +22,7 @@ class UserProfileActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         setProfileCredentials()
+        bindListeners()
     }
 
     private fun setProfileCredentials() {
@@ -35,5 +38,14 @@ class UserProfileActivity : AppCompatActivity() {
 
         Glide.with(this).load(user?.photoUrl).into(profile_photo)
 
+    }
+
+    private fun bindListeners() {
+
+        sign_out.setOnClickListener {
+            FirebaseAuth.getInstance().signOut().also {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+        }
     }
 }
