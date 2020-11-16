@@ -163,8 +163,13 @@ class MainActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("MainActivity", "signInWithCredential:success")
-                    val user = mAuth.currentUser
-                    updateUI(user)
+                    val mUser = mAuth.currentUser
+                    val userEmail = mUser?.email.toString()
+                    val name = mUser?.displayName.toString().split(" ")
+                    val firstName = name[0]
+                    val lastName = name[1]
+                    dataQuery(firstName, lastName, userEmail)
+                    updateUI(mUser)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("MainActivity", "signInWithCredential:failure", task.exception)
@@ -178,8 +183,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun dataQuery(firstName: String, lastName: String, textEmail: String) {
-        val mailSplitter = textEmail.split("@")
-        val emailName = mailSplitter[0]
+        var emailName = textEmail
+        if (textEmail.contains("@")) {
+            val mailSplitter = textEmail.split("@")
+            emailName = mailSplitter[0]
+        }
         val user = UserData(firstName, lastName)
         val ref = FirebaseDatabase.getInstance().reference.child("users")
         ref.child(emailName).push().setValue(user).addOnSuccessListener {
