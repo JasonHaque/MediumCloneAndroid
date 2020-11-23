@@ -3,6 +3,9 @@ package com.example.mediumcloneandroid.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -12,9 +15,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
 import com.example.mediumcloneandroid.R
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_user_profile.*
 import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainUi : AppCompatActivity() {
@@ -48,7 +53,7 @@ class MainUi : AppCompatActivity() {
 
 
         bindListeners()
-//        setProfileCredentials()
+        setProfileCredentials()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -71,12 +76,16 @@ class MainUi : AppCompatActivity() {
 
     private fun setProfileCredentials() {
         val user = mAuth.currentUser
-
         val name = user?.displayName.toString()
+        val navHeaderView: View = navView.getHeaderView(0)
+        val mProfileImageView: ImageView = navHeaderView.findViewById(R.id.display_picture_header)
+        val mProfileNameTextView: TextView = navHeaderView.findViewById(R.id.profile_name_header)
+
         if (name == "") {
-            profile_name_header.text = getString(R.string.profile_name)
-        } else {
-            profile_name_header.text = name
-        }
+            mProfileNameTextView.text = getString(R.string.profile_name)
+        } else {mProfileNameTextView.text = name}
+
+        Glide.with(this).load(user?.photoUrl).circleCrop().into(mProfileImageView)
+
     }
 }

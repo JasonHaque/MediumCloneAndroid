@@ -14,9 +14,9 @@
 
     <ImageView
         android:id="@+id/display_picture_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/profile_pic_circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/img"
         android:layout_marginBottom="12dp"
         android:contentDescription="@string/todo"/>
 

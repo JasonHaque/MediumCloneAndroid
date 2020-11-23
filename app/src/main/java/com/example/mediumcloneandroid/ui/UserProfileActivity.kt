@@ -36,7 +36,7 @@ class UserProfileActivity : AppCompatActivity() {
 
         email_feild.text = email
 
-        Glide.with(this).load(user?.photoUrl).into(profile_photo)
+        Glide.with(this).load(user?.photoUrl).circleCrop().into(profile_photo)
 
     }
 
