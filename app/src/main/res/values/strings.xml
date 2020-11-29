@@ -33,4 +33,5 @@
     <string name="idk">Display Picture for the user profile activity</string>
     <string name="Sign_out">Sign Out</string>
     <string name="create_story">Create Story</string>
+    <string name="write_your_story">Write your story</string>
 </resources>
