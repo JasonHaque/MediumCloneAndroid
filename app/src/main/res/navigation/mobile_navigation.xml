@@ -30,5 +30,12 @@
         android:label="@string/menu_interest"
         tools:layout="@layout/fragment_interests"/>
 
+    <fragment
+        android:id="@+id/nav_create"
+        android:name="com.example.mediumcloneandroid.ui.story.CreateFragment"
+        android:label="@string/create_story"
+        tools:layout="@layout/fragment_create"/>
+
+
 
 </navigation>
