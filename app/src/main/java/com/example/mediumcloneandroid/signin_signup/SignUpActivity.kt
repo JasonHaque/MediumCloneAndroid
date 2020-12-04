@@ -13,7 +13,10 @@ import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.data.UserData
 import com.google.android.gms.common.FirstPartyScopes
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : AppCompatActivity() {
@@ -24,7 +27,6 @@ class SignUpActivity : AppCompatActivity() {
 
 
         bindListeners()
-
     }
 
     // On button clicks
@@ -68,13 +70,33 @@ class SignUpActivity : AppCompatActivity() {
 
     // Add data to firebase
     private fun dataQuery(firstName: String, lastName: String, textEmail: String) {
-        val mailSplitter = textEmail.split("@")
-        val emailName = mailSplitter[0]
+        var email = textEmail
+        if (textEmail.contains("@")) {
+            val mailSplitter = textEmail.split("@")
+            val emailName = mailSplitter[0]
+            val emailValue = mailSplitter[1]
+            val emailValue2 = emailValue.replace(".", "_")
+            email = emailName + "_" + emailValue2
+        }
+
         val user = UserData(firstName, lastName)
         val ref = FirebaseDatabase.getInstance().reference.child("users")
-        ref.child(emailName).push().setValue(user).addOnSuccessListener {
-            Log.i("SignUpActivity", "Data saved" )
-        }.addOnFailureListener { Log.i("SignUpActivity", "Failed to save data") }
+
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.hasChild(email)) {
+                    return
+                } else {
+                    ref.child(email).push().setValue(user).addOnSuccessListener {
+                        Log.i("MainActivity", "Data saved")
+                    }.addOnFailureListener { Log.i("MainActivity", "Failed to save data") }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.i("MainActivity", "Failed to retrieve data from firebase")
+            }
+        })
     }
 
 }

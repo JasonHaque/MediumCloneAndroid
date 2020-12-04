@@ -34,4 +34,6 @@
     <string name="Sign_out">Sign Out</string>
     <string name="create_story">Create Story</string>
     <string name="write_your_story">Write your story</string>
+    <string name="publish">Publish</string>
+    <string name="done">Done</string>
 </resources>
