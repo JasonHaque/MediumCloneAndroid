@@ -36,4 +36,7 @@
     <string name="write_your_story">Write your story</string>
     <string name="publish">Publish</string>
     <string name="done">Done</string>
+    <string name="some_arbitrary_text_to_fill_up_what_the_title_may_look_like">Some arbitrary text to fill up what the title may look like...</string>
+    <string name="hello">Hello</string>
+    <string name="_5_minutes_ago">5 minutes ago</string>
 </resources>
