@@ -2,7 +2,6 @@ package com.example.mediumcloneandroid.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -19,8 +18,6 @@ import com.bumptech.glide.Glide
 import com.example.mediumcloneandroid.R
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_user_profile.*
-import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainUi : AppCompatActivity() {
 

@@ -1,20 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.bookmarks.BookmarksFragment">
-    
+    android:orientation="vertical"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/done"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/done"
+            android:textSize="24sp"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/publish"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/publish"
+            android:textSize="24sp"
+            android:textColor="@color/green"
+            android:gravity="end"/>
+
+    </LinearLayout>
+
     <EditText
+        android:layout_weight="1"
         android:id="@+id/story_text"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        android:hint="@string/write_your_story"
-        android:gravity="top"
+        android:layout_height="0dp"
         android:autofillHints="@string/todo"
-        android:inputType="text" />
+        android:gravity="top"
+        android:textColor="@color/white"
+        android:hint="@string/write_your_story"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textColorHint="@android:color/darker_gray"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
