@@ -1,23 +1,21 @@
 package com.example.mediumcloneandroid.ui.story
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.mediumcloneandroid.R
+import com.example.mediumcloneandroid.ui.MainUi
 
 class CreateFragment : Fragment() {
 
     private lateinit var createViewModel: CreateViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        hideActionBar()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,9 +23,20 @@ class CreateFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         createViewModel = ViewModelProvider(this).get(CreateViewModel::class.java)
-        val view: View = inflater.inflate(R.layout.fragment_create, container, false)
+        val view: View? = inflater.inflate(R.layout.fragment_create, container, false)
+
+        val buttonDone: TextView = view!!.findViewById(R.id.done)
+
+        buttonDone.setOnClickListener {
+            startActivity(Intent(activity, MainUi::class.java))
+        }
 
         return view
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        hideActionBar()
     }
 
     override fun onPause() {
