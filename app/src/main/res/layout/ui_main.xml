@@ -20,6 +20,8 @@
         android:background="#EEFFFDE8"
         android:layout_width="320dp"
         android:layout_height="match_parent"
+        android:paddingStart="8dp"
+        android:paddingEnd="0dp"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/nav_drawer_menu"
         android:layout_marginStart="16dp"
