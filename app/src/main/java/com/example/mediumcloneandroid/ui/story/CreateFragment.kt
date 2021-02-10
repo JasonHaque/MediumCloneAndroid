@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -17,21 +16,27 @@ class CreateFragment : Fragment() {
 
     private lateinit var createViewModel: CreateViewModel
 
+    private lateinit var buttonDone: TextView
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         createViewModel = ViewModelProvider(this).get(CreateViewModel::class.java)
         val view: View? = inflater.inflate(R.layout.fragment_create, container, false)
 
-        val buttonDone: TextView = view!!.findViewById(R.id.done)
+        buttonDone = view!!.findViewById(R.id.done)
 
+        bindListeners()
+
+        return view
+    }
+
+    private fun bindListeners() {
         buttonDone.setOnClickListener {
             startActivity(Intent(activity, MainUi::class.java))
         }
-
-        return view
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,4 +76,5 @@ class CreateFragment : Fragment() {
     private fun showActionBar() {
         (activity as AppCompatActivity?)!!.supportActionBar!!.show()
     }
+
 }

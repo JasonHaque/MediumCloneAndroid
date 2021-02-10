@@ -35,17 +35,47 @@
 
     </LinearLayout>
 
-    <EditText
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="@string/todo"
+            android:textColor="@color/white"
+            android:hint="@string/title"
+            android:inputType="text"
+            android:background="@color/black"
+            android:layout_margin="1dp"
+            android:padding="8dp"
+            android:textSize="24sp"
+            android:textColorHint="@android:color/darker_gray"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_weight="1"
-        android:id="@+id/story_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:autofillHints="@string/todo"
-        android:gravity="top"
-        android:textColor="@color/white"
-        android:hint="@string/write_your_story"
-        android:inputType="text"
-        android:padding="16dp"
-        android:textColorHint="@android:color/darker_gray"/>
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="2dp">
+
+        <EditText
+            android:id="@+id/story_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints="@string/todo"
+            android:gravity="top"
+            android:textColor="@color/white"
+            android:hint="@string/write_your_story"
+            android:layout_margin="1dp"
+            android:background="@color/black"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColorHint="@android:color/darker_gray"/>
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -13,16 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="96dp"
         android:text="@string/sign_up"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="54sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -30,12 +29,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.270">
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
 
         <EditText
             android:id="@+id/first_name"
@@ -72,6 +69,7 @@
         android:layout_width="@dimen/field_box"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="16dp"
         android:autofillHints=""
         android:backgroundTint="@android:color/white"
         android:hint="@string/email"
@@ -79,18 +77,17 @@
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/darker_gray"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.356" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <EditText
         android:id="@+id/password_field_sign_up"
         android:layout_width="@dimen/field_box"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="16dp"
         android:autofillHints=""
         android:backgroundTint="@android:color/white"
         android:hint="@string/password"
@@ -98,18 +95,17 @@
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/darker_gray"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.436" />
+        app:layout_constraintTop_toBottomOf="@+id/email_field_sign_up" />
 
     <EditText
         android:id="@+id/confirm_password_field"
         android:layout_width="@dimen/field_box"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="16dp"
         android:autofillHints=""
         android:backgroundTint="@android:color/white"
         android:hint="@string/confirm_password"
@@ -117,28 +113,23 @@
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/darker_gray"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513" />
+        app:layout_constraintTop_toBottomOf="@+id/password_field_sign_up" />
 
     <Button
         android:id="@+id/sign_up_button"
         android:layout_width="125dp"
         android:layout_height="45dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="264dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/button_border"
         android:text="@string/sign_up"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirm_password_field"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/confirm_password_field" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

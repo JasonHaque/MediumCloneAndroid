@@ -1,5 +1,6 @@
 package com.example.mediumcloneandroid.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +8,11 @@ import com.bumptech.glide.Glide
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.signin_signup.MainActivity
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.activity_user_profile.*
+import kotlinx.android.synthetic.main.activity_user_profile.profile_photo
+import kotlinx.android.synthetic.main.activity_user_profile.sign_out
+import kotlinx.android.synthetic.main.activity_user_profile.user_name
 import kotlinx.android.synthetic.main.nav_header_main.*
 
 class UserProfileActivity : AppCompatActivity() {
@@ -25,6 +30,7 @@ class UserProfileActivity : AppCompatActivity() {
         bindListeners()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setProfileCredentials() {
         val user = auth.currentUser
         val name = user?.displayName.toString()
@@ -32,9 +38,10 @@ class UserProfileActivity : AppCompatActivity() {
 
         if (name == "") {
             user_name.text = getString(R.string.profile_name)
-        } else {user_name.text = name}
+        } else {user_name.text = "Profile Name: $name"
+        }
 
-        email_feild.text = email
+        email_field.text = "Email: $email"
 
         Glide.with(this).load(user?.photoUrl).circleCrop().into(profile_photo)
 
