@@ -48,7 +48,9 @@ class HomeFragment : Fragment() {
 
         for (i in 0 until size) {
             val drawable = "null"
-            val item = StoryItem(drawable, "Text $i", currentTime, currentDate)
+            val storyTitle = "Some Arbitrary Text"
+            val storyFull = "sth"
+            val item = StoryItem(drawable, storyTitle, currentTime, currentDate, storyFull)
 
             list += item
         }

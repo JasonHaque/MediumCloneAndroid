@@ -25,11 +25,11 @@ class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Ad
         val currentItem = storyList[position]
         val context = holder.imageView.context
 
-        if (currentItem.imageView == "null") {
+        if (currentItem.image == "null") {
             holder.imageView.setImageResource(R.drawable.ic_baseline_person_24)
         } else {
             Glide.with(context)
-                .load(currentItem.imageView)
+                .load(currentItem.image)
                 .into(holder.imageView)
         }
 
@@ -39,6 +39,12 @@ class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Ad
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, FullStoryActivity::class.java)
+            intent.putExtra("Story", currentItem.storyTitle)
+            println(currentItem.storyTitle)
+            intent.putExtra("Date", currentItem.postedDate)
+            intent.putExtra("Time", currentItem.postedTime)
+            intent.putExtra("Image", currentItem.image)
+            intent.putExtra("Story", currentItem.storyFull)
             context.startActivity(intent)
         }
 
