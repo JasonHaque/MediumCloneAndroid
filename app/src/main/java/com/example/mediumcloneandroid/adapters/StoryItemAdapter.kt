@@ -1,13 +1,11 @@
 package com.example.mediumcloneandroid.adapters
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mediumcloneandroid.R
@@ -48,16 +46,11 @@ class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Ad
 
     override fun getItemCount() = storyList.size
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageView: ImageView = itemView.writer_profile_picture
         var storyTitle: TextView = itemView.story_title
         var timePosted: TextView = itemView.posted_time
         var datePosted: TextView = itemView.posted_date
-
-        override fun onClick(v: View?) {
-            val intent = Intent( )
-        }
     }
 
 }
