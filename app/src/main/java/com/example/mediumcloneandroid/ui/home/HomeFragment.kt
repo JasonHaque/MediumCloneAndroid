@@ -43,12 +43,12 @@ class HomeFragment : Fragment() {
 
         val list = ArrayList<StoryItem>()
 
-        val sdf = SimpleDateFormat("MMM dd, yyyy")
-        val currentTime = sdf.format(Date())
+        val currentDate = SimpleDateFormat("MMM dd, yyyy").format(Date())
+        val currentTime = SimpleDateFormat("hh:mma").format(Date())
 
         for (i in 0 until size) {
             val drawable = "null"
-            val item = StoryItem(drawable, "Text $i", "5 minutes ago", currentTime)
+            val item = StoryItem(drawable, "Text $i", currentTime, currentDate)
 
             list += item
         }
