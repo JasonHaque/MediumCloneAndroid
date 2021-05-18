@@ -39,7 +39,7 @@ class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Ad
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, FullStoryActivity::class.java)
-            intent.putExtra("Story", currentItem.storyTitle)
+            intent.putExtra("Title", currentItem.storyTitle)
             println(currentItem.storyTitle)
             intent.putExtra("Date", currentItem.postedDate)
             intent.putExtra("Time", currentItem.postedTime)
