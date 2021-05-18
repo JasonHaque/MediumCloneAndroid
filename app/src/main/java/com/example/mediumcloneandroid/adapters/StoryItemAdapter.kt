@@ -27,7 +27,7 @@ class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Ad
             holder.imageView.setImageResource(R.drawable.ic_baseline_person_24)
         } else {
             Glide.with(holder.imageView.context)
-                .load(currentItem.imageView.toString())
+                .load(currentItem.imageView)
                 .into(holder.imageView)
         }
 
@@ -36,9 +36,7 @@ class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Ad
         holder.timePosted.text = currentItem.postedTime
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() = storyList.size
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 

@@ -2,13 +2,14 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp">
+    android:layout_height="120dp"
+    android:background="@android:color/darker_gray">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="1dp"
-        android:background="#333333">
+        android:background="#000000">
 
         <LinearLayout
             android:layout_width="291dp"
@@ -23,45 +24,46 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:maxLength="70"
                 android:maxLines="2"
-                android:text="@string/some_arbitrary_text_to_fill_up_what_the_title_may_look_like"
+                android:text="@string/some_arbitrary_text"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/posted_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:textSize="14sp"
                     android:text="@string/_5_minutes_ago"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8dp"
-                    android:textSize="14sp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/circular_blob"
                     android:textColor="@color/white"
-                    android:layout_marginTop="16dp"/>
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/posted_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:textSize="14sp"
                     android:text="@string/jan_12_2021"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
