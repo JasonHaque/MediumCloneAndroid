@@ -20,18 +20,14 @@ class FullStoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_full_story)
 
         title = intent.getStringExtra("Title").toString()
-        println("THis is  "+title)
         date = intent.getStringExtra("Date").toString()
         time = intent.getStringExtra("Time").toString()
         image = intent.getStringExtra("Image").toString()
         story = intent.getStringExtra("Story").toString()
 
-        story_title.text = title
-
-
-
+        title_story.text = title
+        full_story.text = story
 
     }
-
 
 }

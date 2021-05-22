@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.data.StoryItem
 import com.example.mediumcloneandroid.ui.FullStoryActivity
@@ -28,21 +29,20 @@ class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Ad
         if (currentItem.image == "null") {
             holder.imageView.setImageResource(R.drawable.ic_baseline_person_24)
         } else {
-            Glide.with(context)
-                .load(currentItem.image)
+            Glide.with(context).load(currentItem.image)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageView)
         }
 
         holder.storyTitle.text = currentItem.storyTitle
         holder.datePosted.text = currentItem.postedDate
-        holder.timePosted.text = currentItem.postedTime
+        holder.timePosted.text = currentItem.storyAuthor
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, FullStoryActivity::class.java)
             intent.putExtra("Title", currentItem.storyTitle)
-            println(currentItem.storyTitle)
             intent.putExtra("Date", currentItem.postedDate)
-            intent.putExtra("Time", currentItem.postedTime)
+            intent.putExtra("Time", currentItem.storyAuthor)
             intent.putExtra("Image", currentItem.image)
             intent.putExtra("Story", currentItem.storyFull)
             context.startActivity(intent)
@@ -55,7 +55,7 @@ class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Ad
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageView: ImageView = itemView.writer_profile_picture
         var storyTitle: TextView = itemView.story_title
-        var timePosted: TextView = itemView.posted_time
+        var timePosted: TextView = itemView.author_name
         var datePosted: TextView = itemView.posted_date
     }
 

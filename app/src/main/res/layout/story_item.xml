@@ -2,9 +2,8 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:layout_marginVertical="1dp"
-    android:background="@android:color/darker_gray">
+    android:layout_height="100dp"
+    android:layout_margin="2dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="22dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="20dp"
                 android:maxLength="70"
                 android:maxLines="2"
                 android:text="@string/some_arbitrary_text"
@@ -35,14 +34,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="22dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/posted_time"
+                    android:id="@+id/author_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:text="@string/_5_minutes_ago"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
@@ -51,7 +49,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8dp"
-                    android:layout_marginTop="16dp"
                     android:text="@string/circular_blob"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
@@ -60,7 +57,6 @@
                     android:id="@+id/posted_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:text="@string/jan_12_2021"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
@@ -71,8 +67,8 @@
 
         <ImageView
             android:id="@+id/writer_profile_picture"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
