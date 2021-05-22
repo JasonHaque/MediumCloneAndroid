@@ -44,13 +44,13 @@ class HomeFragment : Fragment() {
         val list = ArrayList<StoryItem>()
 
         val currentDate = SimpleDateFormat("MMM dd, yyyy").format(Date())
-        val currentTime = SimpleDateFormat("hh:mma").format(Date())
+        val drawable = "null"
+        val storyTitle = "Some Arbitrary Text"
+        val storyFull = getString(R.string.some_arbitrary_text2)
+        val author = "David"
 
         for (i in 0 until size) {
-            val drawable = "null"
-            val storyTitle = "Some Arbitrary Text"
-            val storyFull = "sth"
-            val item = StoryItem(drawable, storyTitle, currentTime, currentDate, storyFull)
+            val item = StoryItem(drawable, storyTitle, author, currentDate, storyFull)
 
             list += item
         }

@@ -1,5 +1,6 @@
 package com.example.mediumcloneandroid.adapters
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,7 @@ class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Ad
         return ViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = storyList[position]
         val context = holder.imageView.context
@@ -34,15 +36,17 @@ class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Ad
                 .into(holder.imageView)
         }
 
+        val author = currentItem.storyAuthor
+
         holder.storyTitle.text = currentItem.storyTitle
         holder.datePosted.text = currentItem.postedDate
-        holder.timePosted.text = currentItem.storyAuthor
+        holder.storyAuthor.text = "by $author"
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, FullStoryActivity::class.java)
             intent.putExtra("Title", currentItem.storyTitle)
             intent.putExtra("Date", currentItem.postedDate)
-            intent.putExtra("Time", currentItem.storyAuthor)
+            intent.putExtra("Author", currentItem.storyAuthor)
             intent.putExtra("Image", currentItem.image)
             intent.putExtra("Story", currentItem.storyFull)
             context.startActivity(intent)
@@ -55,7 +59,7 @@ class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Ad
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageView: ImageView = itemView.writer_profile_picture
         var storyTitle: TextView = itemView.story_title
-        var timePosted: TextView = itemView.author_name
+        var storyAuthor: TextView = itemView.author_name
         var datePosted: TextView = itemView.posted_date
     }
 

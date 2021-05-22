@@ -5,33 +5,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.FullStoryActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/black">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/title_story"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
-            android:text="@string/some_arbitrary_text"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="42sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:theme="@style/Theme.NavDrawerTest.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_story"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/Theme.NavDrawerTest.PopupOverlay"
+                app:subtitleTextColor="@color/white"
+                app:titleTextColor="@color/white" />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
             android:id="@+id/full_story"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="44dp"
+            android:padding="8dp"
             android:fontFamily="sans-serif"
             android:text="@string/some_arbitrary_text2"
             android:textColor="@color/white"
@@ -39,7 +45,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_story" />
+            app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
