@@ -41,6 +41,7 @@
         android:background="@android:color/darker_gray">
 
         <EditText
+            android:id="@+id/title_story_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="@string/todo"
@@ -63,7 +64,7 @@
         android:layout_marginTop="2dp">
 
         <EditText
-            android:id="@+id/story_text"
+            android:id="@+id/story_edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:autofillHints="@string/todo"

@@ -21,8 +21,7 @@ class FullStoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_full_story)
 
         val toolbar = toolbar_story
-
-
+        
         title = intent.getStringExtra("Title").toString()
         date = intent.getStringExtra("Date").toString()
         author = intent.getStringExtra("Author").toString()

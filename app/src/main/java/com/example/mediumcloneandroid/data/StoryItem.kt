@@ -1,7 +1,6 @@
 package com.example.mediumcloneandroid.data
 
-import android.widget.ImageView
 
-data class StoryItem(val image: String, val storyTitle: String,
-                     val storyAuthor: String, val postedDate: String,
-                     val storyFull: String)
+data class StoryItem(val Image: String, val StoryTitle: String,
+                     val StoryAuthor: String, val PostedDate: String,
+                     val StoryFull: String)

@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/medium"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.FullStoryActivity"></activity>
+        <activity android:name=".ui.FullStoryActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,6 @@
         <activity android:name=".signin_signup.SignUpActivity" />
         <activity android:name=".signin_signup.MainActivity" />
         <activity android:name=".ui.MainUi" />
-        <activity android:name=".ui.story.CreateActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

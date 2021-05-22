@@ -28,27 +28,27 @@ class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Ad
         val currentItem = storyList[position]
         val context = holder.imageView.context
 
-        if (currentItem.image == "null") {
+        if (currentItem.Image == "null") {
             holder.imageView.setImageResource(R.drawable.ic_baseline_person_24)
         } else {
-            Glide.with(context).load(currentItem.image)
+            Glide.with(context).load(currentItem.Image)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageView)
         }
 
-        val author = currentItem.storyAuthor
+        val author = currentItem.StoryAuthor
 
-        holder.storyTitle.text = currentItem.storyTitle
-        holder.datePosted.text = currentItem.postedDate
+        holder.storyTitle.text = currentItem.StoryTitle
+        holder.datePosted.text = currentItem.PostedDate
         holder.storyAuthor.text = "by $author"
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, FullStoryActivity::class.java)
-            intent.putExtra("Title", currentItem.storyTitle)
-            intent.putExtra("Date", currentItem.postedDate)
-            intent.putExtra("Author", currentItem.storyAuthor)
-            intent.putExtra("Image", currentItem.image)
-            intent.putExtra("Story", currentItem.storyFull)
+            intent.putExtra("Title", currentItem.StoryTitle)
+            intent.putExtra("Date", currentItem.PostedDate)
+            intent.putExtra("Author", currentItem.StoryAuthor)
+            intent.putExtra("Image", currentItem.Image)
+            intent.putExtra("Story", currentItem.StoryFull)
             context.startActivity(intent)
         }
 
