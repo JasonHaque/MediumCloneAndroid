@@ -30,6 +30,7 @@ class CreateFragment : Fragment() {
     private lateinit var createViewModel: CreateViewModel
 
     private lateinit var buttonDone: TextView
+    private lateinit var buttonPublish: TextView
 
     private lateinit var story: String
     private lateinit var author: String
@@ -43,19 +44,19 @@ class CreateFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         createViewModel = ViewModelProvider(this).get(CreateViewModel::class.java)
-        val view: View? = inflater.inflate(R.layout.fragment_create, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_create, container, false)
 
+        buttonDone = view.findViewById(R.id.done)
+        buttonPublish = view.findViewById(R.id.publish)
         bindListeners()
 
         return view
     }
 
     private fun bindListeners() {
-        done.setOnClickListener {
-//            startActivity(Intent(activity, MainUi::class.java))
-
+        buttonDone.setOnClickListener {
             if (title_story_edit_text.text.toString() != "" || story_edit_text.text.toString() != "") {
                 getCredentials()
                 postStory("NotPublished")
@@ -64,17 +65,46 @@ class CreateFragment : Fragment() {
                     .show()
             }
         }
-        publish.setOnClickListener {
-            getCredentials()
-            postStory("Published")
-            postStoryInPublic()
+
+        buttonPublish.setOnClickListener {
+            if (title_story_edit_text.text.toString() != "" || story_edit_text.text.toString() != "") {
+                getCredentials()
+                postStoryInPublic()
+                postStory("Published")
+            } else {
+                Toast.makeText(context, "Fill in your Story and Title", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
 
     }
 
     private fun postStoryInPublic() {
         val post = StoryItem(image, storyTitle, author, currentDate, story)
-         // Implement method
+
+        val key = storyTitle
+        key.replace("\\S".toRegex(), "_")
+
+        val db = FirebaseDatabase.getInstance().getReference("Stories")
+            .child("AllStories")
+
+        db.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (!snapshot.hasChild(key)) {
+                    db.child(key).setValue(post).addOnSuccessListener {
+                        Toast.makeText(context, "Story Published", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(activity, MainUi::class.java))
+                    }.addOnFailureListener {
+                        Toast.makeText(context, "Could not write data", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.i(context.toString(), "Something went wrong")
+            }
+
+        })
     }
 
     private fun postStory(place: String) {
@@ -82,7 +112,6 @@ class CreateFragment : Fragment() {
 
         val key = storyTitle
         key.replace("\\s".toRegex() , "_")
-        print(key)
 
         val db = FirebaseDatabase.getInstance().getReference("users")
             .child(email)
@@ -93,7 +122,9 @@ class CreateFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.hasChild(key)) {
                     db.child(key).setValue(post).addOnSuccessListener {
-                        Toast.makeText(context, "Story saved on Draft", Toast.LENGTH_SHORT).show()
+                        if (key == "NotPublished") {
+                            Toast.makeText(context, "Story saved on Draft", Toast.LENGTH_SHORT).show()
+                        }
                     }.addOnFailureListener {
                         Toast.makeText(context, "Could not write data", Toast.LENGTH_SHORT).show()
                     }
