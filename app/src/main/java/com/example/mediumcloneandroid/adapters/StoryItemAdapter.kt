@@ -15,7 +15,7 @@ import com.example.mediumcloneandroid.data.StoryItem
 import com.example.mediumcloneandroid.ui.FullStoryActivity
 import kotlinx.android.synthetic.main.story_item.view.*
 
-class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Adapter<StoryItemAdapter.ViewHolder>() {
+class StoryItemAdapter(private val storyList: ArrayList<StoryItem>) : RecyclerView.Adapter<StoryItemAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -28,27 +28,27 @@ class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Ad
         val currentItem = storyList[position]
         val context = holder.imageView.context
 
-        if (currentItem.Image == "null") {
+        if (currentItem.image == "null") {
             holder.imageView.setImageResource(R.drawable.ic_baseline_person_24)
         } else {
-            Glide.with(context).load(currentItem.Image)
+            Glide.with(context).load(currentItem.image)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageView)
         }
 
-        val author = currentItem.StoryAuthor
+        val author = currentItem.storyAuthor
 
-        holder.storyTitle.text = currentItem.StoryTitle
-        holder.datePosted.text = currentItem.PostedDate
-        holder.storyAuthor.text = "by $author"
+        holder.storyTitleView.text = currentItem.storyTitle
+        holder.datePosted.text = currentItem.postedDate
+        holder.storyAuthorView.text = "by $author"
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, FullStoryActivity::class.java)
-            intent.putExtra("Title", currentItem.StoryTitle)
-            intent.putExtra("Date", currentItem.PostedDate)
-            intent.putExtra("Author", currentItem.StoryAuthor)
-            intent.putExtra("Image", currentItem.Image)
-            intent.putExtra("Story", currentItem.StoryFull)
+            intent.putExtra("Title", currentItem.storyTitle)
+            intent.putExtra("Date", currentItem.postedDate)
+            intent.putExtra("Author", currentItem.storyAuthor)
+            intent.putExtra("Image", currentItem.image)
+            intent.putExtra("Story", currentItem.storyFull)
             context.startActivity(intent)
         }
 
@@ -58,8 +58,8 @@ class StoryItemAdapter(private val storyList: List<StoryItem>) : RecyclerView.Ad
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageView: ImageView = itemView.writer_profile_picture
-        var storyTitle: TextView = itemView.story_title
-        var storyAuthor: TextView = itemView.author_name
+        var storyTitleView: TextView = itemView.story_title
+        var storyAuthorView: TextView = itemView.author_name
         var datePosted: TextView = itemView.posted_date
     }
 

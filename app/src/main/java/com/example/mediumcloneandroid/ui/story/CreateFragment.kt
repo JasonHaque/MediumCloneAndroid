@@ -76,7 +76,6 @@ class CreateFragment : Fragment() {
                     .show()
             }
         }
-
     }
 
     private fun postStoryInPublic() {
@@ -136,10 +135,8 @@ class CreateFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {
                 Log.i(context.toString(), "Something went wrong")
             }
+
         })
-
-
-
     }
 
     @SuppressLint("SimpleDateFormat")

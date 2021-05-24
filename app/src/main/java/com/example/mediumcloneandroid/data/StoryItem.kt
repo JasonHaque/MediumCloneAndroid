@@ -1,6 +1,10 @@
 package com.example.mediumcloneandroid.data
 
 
-data class StoryItem(val Image: String, val StoryTitle: String,
-                     val StoryAuthor: String, val PostedDate: String,
-                     val StoryFull: String)
+data class StoryItem(
+    var image: String?=null,
+    var postedDate: String?=null,
+    var storyAuthor: String?=null,
+    var storyFull: String?=null,
+    var storyTitle: String?=null,
+)

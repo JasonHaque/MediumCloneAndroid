@@ -25,7 +25,8 @@
                 android:layout_marginStart="22dp"
                 android:layout_marginTop="20dp"
                 android:maxLength="70"
-                android:maxLines="2"
+                android:maxLines="1"
+                android:maxEms="9"
                 android:text="@string/some_arbitrary_text"
                 android:textColor="@color/white"
                 android:textSize="22sp" />

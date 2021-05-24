@@ -21,7 +21,6 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-
         bindListeners()
     }
 
@@ -83,7 +82,7 @@ class SignUpActivity : AppCompatActivity() {
                 if (snapshot.hasChild(email)) {
                     return
                 } else {
-                    ref.child(email).push().setValue(user).addOnSuccessListener {
+                    ref.child(email).setValue(user).addOnSuccessListener {
                         Log.i("MainActivity", "Data saved")
                     }.addOnFailureListener { Log.i("MainActivity", "Failed to save data") }
                 }
