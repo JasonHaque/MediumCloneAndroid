@@ -13,22 +13,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_audio"
-        android:name="com.example.mediumcloneandroid.ui.audio.AudioFragment"
-        android:label="@string/menu_audio"
-        tools:layout="@layout/fragment_audio" />
-
-    <fragment
-        android:id="@+id/nav_bookmarks"
-        android:name="com.example.mediumcloneandroid.ui.bookmarks.BookmarksFragment"
-        android:label="@string/menu_bookmarks"
-        tools:layout="@layout/fragment_bookmarks" />
-
-    <fragment
-        android:id="@+id/nav_interests"
-        android:name="com.example.mediumcloneandroid.ui.interests.InterestsFragment"
-        android:label="@string/menu_interest"
-        tools:layout="@layout/fragment_interests"/>
+        android:id="@+id/nav_my_stories"
+        android:name="com.example.mediumcloneandroid.ui.my_story.MyStoryFragment"
+        android:label="@string/my_stories"
+        tools:layout="@layout/fragment_my_stories"/>
 
     <fragment
         android:id="@+id/nav_create"
