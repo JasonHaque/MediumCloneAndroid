@@ -47,4 +47,6 @@
     <string name="circular_blob">●</string>
     <string name="read_more">Read More</string>
     <string name="my_stories">My Stories</string>
+    <string name="published_fragment">Published Fragment</string>
+    <string name="draft_fragment">Draft Fragment</string>
 </resources>
