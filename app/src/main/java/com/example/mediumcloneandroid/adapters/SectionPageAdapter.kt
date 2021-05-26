@@ -10,9 +10,6 @@ import com.example.mediumcloneandroid.ui.tab_fragments.PublishedFragment
 class SectionPageAdapter(fm: FragmentManager, lifecycle: Lifecycle)
     : FragmentStateAdapter(fm, lifecycle) {
 
-
-    private var titleList: List<String> = ArrayList()
-
     override fun getItemCount(): Int {
         return 2
     }

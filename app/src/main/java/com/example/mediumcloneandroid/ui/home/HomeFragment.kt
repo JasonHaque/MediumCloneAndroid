@@ -36,8 +36,6 @@ class HomeFragment : Fragment() {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-
-
         dbRef = FirebaseDatabase.getInstance().getReference("Stories")
         storyList = arrayListOf()
         initLoader()
@@ -69,24 +67,24 @@ class HomeFragment : Fragment() {
         })
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private fun generateDummyList(size: Int): List<StoryItem> {
-
-        val list = ArrayList<StoryItem>()
-
-        val currentDate = SimpleDateFormat("MMM dd, yyyy").format(Date())
-        val drawable = "null"
-        val storyTitle = "Some Arbitrary Text"
-        val storyFull = getString(R.string.some_arbitrary_text2)
-        val author = "David"
-
-        for (i in 0 until size) {
-            val item = StoryItem(drawable, storyTitle, author, currentDate, storyFull)
-
-            list += item
-        }
-
-        return list
-    }
+//    @SuppressLint("SimpleDateFormat")
+//    private fun generateDummyList(size: Int): List<StoryItem> {
+//
+//        val list = ArrayList<StoryItem>()
+//
+//        val currentDate = SimpleDateFormat("MMM dd, yyyy").format(Date())
+//        val drawable = "null"
+//        val storyTitle = "Some Arbitrary Text"
+//        val storyFull = getString(R.string.some_arbitrary_text2)
+//        val author = "David"
+//
+//        for (i in 0 until size) {
+//            val item = StoryItem(drawable, storyTitle, author, currentDate, storyFull)
+//
+//            list += item
+//        }
+//
+//        return list
+//    }
 
 }
