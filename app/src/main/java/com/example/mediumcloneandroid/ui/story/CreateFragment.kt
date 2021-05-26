@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.data.StoryItem
 import com.example.mediumcloneandroid.ui.MainUi
+import com.example.mediumcloneandroid.ui.home.HomeFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -79,7 +80,7 @@ class CreateFragment : Fragment() {
     }
 
     private fun postStoryInPublic() {
-        val post = StoryItem(image, storyTitle, author, currentDate, story)
+        val post = StoryItem(image, currentDate, author, story, storyTitle)
 
         val key = storyTitle
         key.replace("\\S".toRegex(), "_")
@@ -92,7 +93,6 @@ class CreateFragment : Fragment() {
                 if (!snapshot.hasChild(key)) {
                     db.child(key).setValue(post).addOnSuccessListener {
                         Toast.makeText(context, "Story Published", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(activity, MainUi::class.java))
                     }.addOnFailureListener {
                         Toast.makeText(context, "Could not write data", Toast.LENGTH_SHORT).show()
                     }
@@ -107,7 +107,7 @@ class CreateFragment : Fragment() {
     }
 
     private fun postStory(place: String) {
-        val post = StoryItem(image, storyTitle, author, currentDate, story)
+        val post = StoryItem(image, currentDate, author, story, storyTitle)
 
         val key = storyTitle
         key.replace("\\s".toRegex() , "_")
@@ -121,9 +121,10 @@ class CreateFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.hasChild(key)) {
                     db.child(key).setValue(post).addOnSuccessListener {
-                        if (key == "NotPublished") {
+                        if (place == "NotPublished") {
                             Toast.makeText(context, "Story saved on Draft", Toast.LENGTH_SHORT).show()
                         }
+                        startActivity(Intent(activity, MainUi::class.java))
                     }.addOnFailureListener {
                         Toast.makeText(context, "Could not write data", Toast.LENGTH_SHORT).show()
                     }
