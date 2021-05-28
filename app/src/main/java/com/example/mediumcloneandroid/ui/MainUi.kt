@@ -7,8 +7,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -21,7 +19,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.mediumcloneandroid.R
-import com.example.mediumcloneandroid.signin_signup.MainActivity
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -75,13 +72,13 @@ class MainUi : AppCompatActivity() {
 
     }
 
-    private fun signOut() {
-        Toast.makeText(applicationContext, "Signing Out", Toast.LENGTH_SHORT).show()
-
-        mAuth.signOut().also {
-            startActivity(Intent(this, MainActivity::class.java))
-        }
-    }
+//    private fun signOut() {
+//        Toast.makeText(applicationContext, "Signing Out", Toast.LENGTH_SHORT).show()
+//
+//        mAuth.signOut().also {
+//            startActivity(Intent(this, MainActivity::class.java))
+//        }
+//    }
 
     private fun setProfileCredentials() {
         val user = mAuth.currentUser

@@ -51,4 +51,6 @@
     <string name="draft_fragment">Draft Fragment</string>
     <string name="storybook">Storybook</string>
     <string name="support_writers">Support Writers</string>
+    <string name="writer_s_name">Writer\'s Name</string>
+    <string name="support">Support</string>
 </resources>

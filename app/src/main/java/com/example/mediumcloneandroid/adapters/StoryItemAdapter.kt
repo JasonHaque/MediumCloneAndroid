@@ -19,7 +19,7 @@ class StoryItemAdapter(private val storyList: ArrayList<StoryItem>) : RecyclerVi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view: View = inflater.inflate(R.layout.story_item, parent, false)
+        val view = inflater.inflate(R.layout.story_item, parent, false)
         return ViewHolder(view)
     }
 
