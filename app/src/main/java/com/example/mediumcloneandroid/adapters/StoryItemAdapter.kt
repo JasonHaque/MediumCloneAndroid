@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.data.StoryItem
-import com.example.mediumcloneandroid.ui.FullStoryActivity
+import com.example.mediumcloneandroid.ui.story.FullStoryActivity
 import kotlinx.android.synthetic.main.story_item.view.*
 
 class StoryItemAdapter(private val storyList: ArrayList<StoryItem>) : RecyclerView.Adapter<StoryItemAdapter.ViewHolder>() {

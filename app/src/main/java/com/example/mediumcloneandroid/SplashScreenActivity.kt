@@ -5,9 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.Window
-import android.view.WindowManager
-import androidx.core.content.ContextCompat
 import com.example.mediumcloneandroid.signin_signup.MainActivity
 import com.example.mediumcloneandroid.ui.MainUi
 import com.google.firebase.auth.FirebaseAuth

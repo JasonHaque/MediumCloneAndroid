@@ -1,11 +1,8 @@
-package com.example.mediumcloneandroid.ui
+package com.example.mediumcloneandroid.ui.story
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.appcompat.widget.Toolbar
 import com.example.mediumcloneandroid.R
-import com.example.mediumcloneandroid.databinding.ActivityFullStoryBinding
 import kotlinx.android.synthetic.main.activity_full_story.*
 
 class FullStoryActivity : AppCompatActivity() {

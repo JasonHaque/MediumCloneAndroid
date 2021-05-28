@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/medium"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.FullStoryActivity" />
+        <activity android:name=".ui.SupportActivity"></activity>
+        <activity android:name=".ui.story.FullStoryActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -2,6 +2,7 @@ package com.example.mediumcloneandroid.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
@@ -94,6 +95,17 @@ class MainUi : AppCompatActivity() {
         } else {mProfileNameTextView.text = name}
 
         Glide.with(this).load(user?.photoUrl).circleCrop().into(mProfileImageView)
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.support_writers) {
+            startActivity(Intent(this, SupportActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

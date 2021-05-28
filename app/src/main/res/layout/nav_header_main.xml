@@ -6,7 +6,7 @@
     android:layout_height="@dimen/nav_header_height"
     android:orientation="vertical"
     android:gravity="bottom"
-    android:background="@android:color/white"
+    android:background="@android:color/black"
     android:paddingTop="16dp"
     android:paddingEnd="16dp"
     android:paddingStart="16dp"
@@ -26,12 +26,13 @@
         android:layout_height="wrap_content"
         android:text="@string/profile_name"
         android:layout_marginBottom="4dp"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/view_profile"
+        android:textColor="#A6FFFFFF"
         android:layout_marginBottom="4dp"/>
 
 </LinearLayout>

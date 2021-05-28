@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/black"
     android:layout_height="match_parent"
     tools:context=".ui.UserProfileActivity">
 
@@ -27,8 +28,8 @@
         android:layout_marginTop="64dp"
         android:text="@string/profile_name_"
         android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="32sp"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_photo" />
 
@@ -41,8 +42,8 @@
         android:layout_marginTop="28dp"
         android:text="@string/email"
         android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="32sp"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
@@ -51,7 +52,7 @@
         android:layout_width="115dp"
         android:layout_height="50dp"
         android:layout_marginBottom="32dp"
-        android:background="@color/black"
+        android:background="@drawable/button_border"
         android:textColor="@color/white"
         android:text="@string/Sign_out"
         app:layout_constraintBottom_toBottomOf="parent"

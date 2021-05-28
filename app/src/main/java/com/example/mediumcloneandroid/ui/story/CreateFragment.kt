@@ -11,24 +11,19 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.data.StoryItem
 import com.example.mediumcloneandroid.ui.MainUi
-import com.example.mediumcloneandroid.ui.home.HomeFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_create.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class CreateFragment : Fragment() {
-
-    private lateinit var createViewModel: CreateViewModel
 
     private lateinit var buttonDone: TextView
     private lateinit var buttonPublish: TextView
@@ -46,8 +41,7 @@ class CreateFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        createViewModel = ViewModelProvider(this).get(CreateViewModel::class.java)
-        val view: View = inflater.inflate(R.layout.fragment_create, container, false)
+        val view = inflater.inflate(R.layout.fragment_create, container, false)
 
         buttonDone = view.findViewById(R.id.done)
         buttonPublish = view.findViewById(R.id.publish)

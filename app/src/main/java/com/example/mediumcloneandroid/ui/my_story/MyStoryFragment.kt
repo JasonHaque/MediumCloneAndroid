@@ -5,9 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.adapters.SectionPageAdapter
@@ -16,19 +13,15 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class MyStoryFragment : Fragment() {
 
-    private lateinit var myStoryViewModel: MyStoryViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        myStoryViewModel =
-            ViewModelProvider(this).get(MyStoryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_my_stories, container, false)
+        val view  = inflater.inflate(R.layout.fragment_my_stories, container, false)
 
-        val tabLayout = root.findViewById<TabLayout>(R.id.tabLayout)
-        val viewPager = root.findViewById<ViewPager2>(R.id.viewPager)
+        val tabLayout = view.findViewById<TabLayout>(R.id.tabLayout)
+        val viewPager = view.findViewById<ViewPager2>(R.id.viewPager)
 
         val adapter = SectionPageAdapter(requireActivity().supportFragmentManager, lifecycle)
 
@@ -41,6 +34,6 @@ class MyStoryFragment : Fragment() {
             }
         }.attach()
 
-        return root
+        return view
     }
 }
