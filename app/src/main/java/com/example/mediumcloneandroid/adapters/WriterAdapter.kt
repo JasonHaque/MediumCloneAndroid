@@ -1,6 +1,7 @@
 package com.example.mediumcloneandroid.adapters
 
 import android.graphics.Color
+import android.graphics.ColorMatrix
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,7 +38,7 @@ class WriterAdapter(private val writerList: ArrayList<Writer>) :
 
         holder.supportButton.setOnClickListener {
             black = if (black) {
-                holder.supportButton.setBackgroundColor(Color.GREEN)
+                holder.supportButton.setBackgroundColor(Color.TRANSPARENT)
                 Toast.makeText(holder.imageView.context, "Supported ${currentWriter.authorName}", Toast.LENGTH_SHORT).show()
                 false
             } else {
