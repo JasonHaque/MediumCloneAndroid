@@ -11,13 +11,10 @@ import kotlinx.android.synthetic.main.activity_support.*
 
 class SupportActivity : AppCompatActivity() {
 
-    private var black: Boolean = true
-
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_support)
-
 
         toolbar_writer.title = "Support Writers"
         setSupportActionBar(toolbar_writer)

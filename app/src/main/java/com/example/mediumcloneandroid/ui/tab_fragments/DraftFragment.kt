@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.adapters.StoryItemAdapter
@@ -13,6 +15,7 @@ import com.example.mediumcloneandroid.data.StoryItem
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_draft.view.*
+import kotlinx.android.synthetic.main.fragment_published.view.*
 
 class DraftFragment : Fragment() {
 
@@ -21,6 +24,8 @@ class DraftFragment : Fragment() {
     private lateinit var storyList: ArrayList<StoryItem>
 
     private lateinit var userEmail: String
+
+    private lateinit var progressBar: ProgressBar
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +41,10 @@ class DraftFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_draft, container, false)
+
+        progressBar = view.findViewById(R.id.progress_bar_draft)
+        view.recycler_view_draft.isVisible = false
+        progressBar.isVisible = true
 
         view.recycler_view_draft.layoutManager = LinearLayoutManager(context)
         view.recycler_view_draft.setHasFixedSize(true)
@@ -69,6 +78,8 @@ class DraftFragment : Fragment() {
                 }
 
                 view?.recycler_view_draft?.adapter = StoryItemAdapter(storyList)
+                progressBar.isVisible = false
+                view!!.recycler_view_draft.isVisible = true
 
             }
 

@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.adapters.StoryItemAdapter
@@ -20,12 +22,18 @@ class HomeFragment : Fragment() {
 
     private lateinit var storyList: ArrayList<StoryItem>
 
+    private lateinit var progressBar: ProgressBar
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        progressBar = view.findViewById(R.id.progress_bar_home)
+        view.recycler_view.isVisible = false
+        progressBar.isVisible = true
 
         dbRef = FirebaseDatabase.getInstance().getReference("Stories")
         storyList = arrayListOf()
@@ -47,7 +55,9 @@ class HomeFragment : Fragment() {
                     storyList.add(storyItem!!)
                 }
 
-                view?.recycler_view?.adapter = StoryItemAdapter(storyList)
+                view!!.recycler_view.adapter = StoryItemAdapter(storyList)
+                progressBar.isVisible = false
+                view!!.recycler_view.isVisible = true
 
             }
 
