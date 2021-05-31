@@ -1,7 +1,10 @@
 package com.example.mediumcloneandroid.ui.story
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -36,6 +39,10 @@ class CreateFragment : Fragment() {
 
     private lateinit var email: String
 
+    private lateinit var connMgr: ConnectivityManager
+    private var netInfo: NetworkInfo? = null
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,9 +50,15 @@ class CreateFragment : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_create, container, false)
 
+        connMgr = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE)
+                as ConnectivityManager
+        netInfo = connMgr.activeNetworkInfo
+
         buttonDone = view.findViewById(R.id.done)
         buttonPublish = view.findViewById(R.id.publish)
+
         bindListeners()
+
 
         return view
     }
@@ -53,8 +66,15 @@ class CreateFragment : Fragment() {
     private fun bindListeners() {
         buttonDone.setOnClickListener {
             if (title_story_edit_text.text.toString() != "" || story_edit_text.text.toString() != "") {
-                getCredentials()
-                postStory("NotPublished")
+
+                if (netInfo != null && netInfo!!.isConnected) {
+                    getCredentials()
+                    postStory("NotPublished")
+                } else {
+                    Toast.makeText(context, "No Internet Connection", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
             } else {
                 Toast.makeText(context, "Fill in your Story and Title", Toast.LENGTH_SHORT)
                     .show()
@@ -63,9 +83,16 @@ class CreateFragment : Fragment() {
 
         buttonPublish.setOnClickListener {
             if (title_story_edit_text.text.toString() != "" || story_edit_text.text.toString() != "") {
-                getCredentials()
-                postStoryInPublic()
-                postStory("Published")
+
+                if (netInfo != null && netInfo!!.isConnected) {
+                    getCredentials()
+                    postStoryInPublic()
+                    postStory("Published")
+                } else {
+                    Toast.makeText(context, "No Internet Connection", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
             } else {
                 Toast.makeText(context, "Fill in your Story and Title", Toast.LENGTH_SHORT)
                     .show()
