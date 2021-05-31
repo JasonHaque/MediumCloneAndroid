@@ -53,4 +53,5 @@
     <string name="support_writers">Support Writers</string>
     <string name="writer_s_name">Writer\'s Name</string>
     <string name="support">Support</string>
+    <string name="no_internet_connection">No Internet Connection</string>
 </resources>

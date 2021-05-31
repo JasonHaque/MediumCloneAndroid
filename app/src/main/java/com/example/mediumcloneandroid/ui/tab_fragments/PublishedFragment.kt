@@ -1,5 +1,8 @@
 package com.example.mediumcloneandroid.ui.tab_fragments
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -27,6 +30,10 @@ class PublishedFragment : Fragment() {
 
     private lateinit var progressBar: ProgressBar
 
+    private lateinit var connMgr: ConnectivityManager
+
+    private var netInfo: NetworkInfo? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +50,24 @@ class PublishedFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_published, container, false)
 
         progressBar = view.findViewById(R.id.progress_bar_published)
+
+        connMgr = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE)
+                as ConnectivityManager
+        netInfo = connMgr.activeNetworkInfo
+
         view.recycler_view_published.isVisible = false
         progressBar.isVisible = true
 
         view.recycler_view_published.layoutManager = LinearLayoutManager(context)
         view.recycler_view_published.setHasFixedSize(true)
-        initLoader()
+
+        if (netInfo != null && netInfo!!.isConnected) {
+            initLoader()
+        } else {
+            progressBar.isVisible = false
+            view.internet_published.isVisible = true
+        }
+
 
         return view
     }

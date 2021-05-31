@@ -1,5 +1,9 @@
 package com.example.mediumcloneandroid.ui.home
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +11,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.core.content.ContextCompat
+import androidx.core.content.getSystemService
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mediumcloneandroid.R
@@ -24,6 +30,10 @@ class HomeFragment : Fragment() {
 
     private lateinit var progressBar: ProgressBar
 
+    private lateinit var connMgr: ConnectivityManager
+
+    private var netInfo: NetworkInfo? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,12 +42,24 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         progressBar = view.findViewById(R.id.progress_bar_home)
+
+        connMgr = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE)
+                as ConnectivityManager
+        netInfo = connMgr.activeNetworkInfo
+
         view.recycler_view.isVisible = false
         progressBar.isVisible = true
 
         dbRef = FirebaseDatabase.getInstance().getReference("Stories")
         storyList = arrayListOf()
-        initLoader()
+
+        if (netInfo != null && netInfo!!.isConnected) {
+            initLoader()
+        } else {
+            progressBar.isVisible = false
+            view.internet_home.isVisible = true
+        }
+
 
         view.recycler_view.layoutManager = LinearLayoutManager(context)
         view.recycler_view.setHasFixedSize(true)
@@ -67,25 +89,5 @@ class HomeFragment : Fragment() {
 
         })
     }
-
-//    @SuppressLint("SimpleDateFormat")
-//    private fun generateDummyList(size: Int): List<StoryItem> {
-//
-//        val list = ArrayList<StoryItem>()
-//
-//        val currentDate = SimpleDateFormat("MMM dd, yyyy").format(Date())
-//        val drawable = "null"
-//        val storyTitle = "Some Arbitrary Text"
-//        val storyFull = getString(R.string.some_arbitrary_text2)
-//        val author = "David"
-//
-//        for (i in 0 until size) {
-//            val item = StoryItem(drawable, storyTitle, author, currentDate, storyFull)
-//
-//            list += item
-//        }
-//
-//        return list
-//    }
 
 }
