@@ -32,8 +32,8 @@ class HomeFragment : Fragment() {
     private lateinit var storyList: ArrayList<StoryItem>
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var refresh: SwipeRefreshLayout
     private lateinit var progressBar: ProgressBar
+    private lateinit var refresh: SwipeRefreshLayout
 
     private lateinit var connMgr: ConnectivityManager
 
@@ -95,7 +95,6 @@ class HomeFragment : Fragment() {
                     storyList.add(storyItem!!)
                 }
 
-                recyclerView.adapter = StoryItemAdapter(storyList)
                 recyclerView.adapter?.notifyDataSetChanged()
                 refresh.isRefreshing = false
             }

@@ -13,6 +13,7 @@ import android.widget.ProgressBar
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.adapters.StoryItemAdapter
 import com.example.mediumcloneandroid.data.StoryItem
@@ -31,6 +32,7 @@ class DraftFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
+    private lateinit var refresh: SwipeRefreshLayout
 
     private lateinit var connMgr: ConnectivityManager
 
@@ -53,6 +55,7 @@ class DraftFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recycler_view_draft)
         progressBar = view.findViewById(R.id.progress_bar_draft)
+        refresh = view.findViewById(R.id.swipe_to_refresh_draft)
 
         connMgr = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE)
                 as ConnectivityManager
@@ -71,7 +74,39 @@ class DraftFragment : Fragment() {
             view.internet_draft.isVisible = true
         }
 
+        bindListeners()
+
         return view
+    }
+
+    private fun bindListeners() {
+
+        refresh.setOnRefreshListener {
+            refreshData()
+        }
+
+    }
+
+    private fun refreshData() {
+        dbRef.child("Stories").child("NotPublished").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                storyList.clear()
+
+                for (storySnapshot in snapshot.children) {
+                    val storyItem = storySnapshot.getValue(StoryItem::class.java)
+                    storyList.add(storyItem!!)
+                }
+
+                recyclerView.adapter?.notifyDataSetChanged()
+                refresh.isRefreshing = false
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.i(context.toString(), "Something went wrong")
+            }
+
+        })
     }
 
     private fun getUserEmail() {
