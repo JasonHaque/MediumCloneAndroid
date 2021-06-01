@@ -15,10 +15,13 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.adapters.StoryItemAdapter
 import com.example.mediumcloneandroid.data.StoryItem
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlin.collections.ArrayList
 
@@ -28,11 +31,14 @@ class HomeFragment : Fragment() {
 
     private lateinit var storyList: ArrayList<StoryItem>
 
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var refresh: SwipeRefreshLayout
     private lateinit var progressBar: ProgressBar
 
     private lateinit var connMgr: ConnectivityManager
 
     private var netInfo: NetworkInfo? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,12 +48,14 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         progressBar = view.findViewById(R.id.progress_bar_home)
+        refresh = view.findViewById(R.id.swipe_to_refresh)
+        recyclerView = view.findViewById(R.id.recycler_view)
 
         connMgr = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE)
                 as ConnectivityManager
         netInfo = connMgr.activeNetworkInfo
 
-        view.recycler_view.isVisible = false
+        recyclerView.isVisible = false
         progressBar.isVisible = true
 
         dbRef = FirebaseDatabase.getInstance().getReference("Stories")
@@ -61,10 +69,41 @@ class HomeFragment : Fragment() {
         }
 
 
-        view.recycler_view.layoutManager = LinearLayoutManager(context)
-        view.recycler_view.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.setHasFixedSize(true)
+
+        bindListeners()
 
         return view
+    }
+
+    private fun bindListeners() {
+
+        refresh.setOnRefreshListener {
+            refreshData()
+        }
+
+    }
+
+    private fun refreshData() {
+        dbRef.child("AllStories").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                storyList.clear()
+
+                for (storySnapshot in snapshot.children) {
+                    val storyItem = storySnapshot.getValue(StoryItem::class.java)
+                    storyList.add(storyItem!!)
+                }
+
+                recyclerView.adapter = StoryItemAdapter(storyList)
+                recyclerView.adapter?.notifyDataSetChanged()
+                refresh.isRefreshing = false
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.i(context.toString(), "Something went wrong")
+            }
+        })
     }
 
     private fun initLoader() {
@@ -77,9 +116,9 @@ class HomeFragment : Fragment() {
                     storyList.add(storyItem!!)
                 }
 
-                view!!.recycler_view.adapter = StoryItemAdapter(storyList)
+                recyclerView.adapter = StoryItemAdapter(storyList)
                 progressBar.isVisible = false
-                view!!.recycler_view.isVisible = true
+                recyclerView.isVisible = true
 
             }
 
