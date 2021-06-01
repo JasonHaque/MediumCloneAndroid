@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.adapters.StoryItemAdapter
 import com.example.mediumcloneandroid.data.StoryItem
@@ -28,6 +29,7 @@ class DraftFragment : Fragment() {
 
     private lateinit var userEmail: String
 
+    private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
 
     private lateinit var connMgr: ConnectivityManager
@@ -49,17 +51,18 @@ class DraftFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_draft, container, false)
 
+        recyclerView = view.findViewById(R.id.recycler_view_draft)
         progressBar = view.findViewById(R.id.progress_bar_draft)
 
         connMgr = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE)
                 as ConnectivityManager
         netInfo = connMgr.activeNetworkInfo
 
-        view.recycler_view_draft.isVisible = false
+        recyclerView.isVisible = false
         progressBar.isVisible = true
 
-        view.recycler_view_draft.layoutManager = LinearLayoutManager(context)
-        view.recycler_view_draft.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.setHasFixedSize(true)
 
         if (netInfo != null && netInfo!!.isConnected) {
             initLoader()
@@ -95,9 +98,9 @@ class DraftFragment : Fragment() {
                     storyList.add(storyItem!!)
                 }
 
-                view?.recycler_view_draft?.adapter = StoryItemAdapter(storyList)
+                recyclerView.adapter = StoryItemAdapter(storyList)
                 progressBar.isVisible = false
-                view!!.recycler_view_draft.isVisible = true
+                recyclerView.isVisible = true
 
             }
 

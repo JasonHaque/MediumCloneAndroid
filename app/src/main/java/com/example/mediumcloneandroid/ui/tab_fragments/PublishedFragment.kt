@@ -12,12 +12,12 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.adapters.StoryItemAdapter
 import com.example.mediumcloneandroid.data.StoryItem
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_published.view.*
 
 class PublishedFragment : Fragment() {
@@ -28,6 +28,7 @@ class PublishedFragment : Fragment() {
 
     private lateinit var userEmail: String
 
+    private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
 
     private lateinit var connMgr: ConnectivityManager
@@ -49,17 +50,18 @@ class PublishedFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_published, container, false)
 
+        recyclerView = view.findViewById(R.id.recycler_view_published)
         progressBar = view.findViewById(R.id.progress_bar_published)
 
         connMgr = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE)
                 as ConnectivityManager
         netInfo = connMgr.activeNetworkInfo
 
-        view.recycler_view_published.isVisible = false
+        recyclerView.isVisible = false
         progressBar.isVisible = true
 
-        view.recycler_view_published.layoutManager = LinearLayoutManager(context)
-        view.recycler_view_published.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.setHasFixedSize(true)
 
         if (netInfo != null && netInfo!!.isConnected) {
             initLoader()
@@ -96,9 +98,9 @@ class PublishedFragment : Fragment() {
                     storyList.add(storyItem!!)
                 }
 
-                view?.recycler_view_published?.adapter = StoryItemAdapter(storyList)
+                recyclerView.adapter = StoryItemAdapter(storyList)
                 progressBar.isVisible = false
-                view!!.recycler_view_published.isVisible = true
+                recyclerView.isVisible = true
 
             }
 
