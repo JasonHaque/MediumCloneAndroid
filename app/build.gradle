@@ -70,6 +70,7 @@ dependencies {
     // Glider
     implementation 'com.github.bumptech.glide:glide:4.11.0'
 
+    // Circular image view
     implementation 'com.mikhaellopez:circularimageview:4.2.0'
 
     // CardView
@@ -81,4 +82,8 @@ dependencies {
     // Swipe to refresh
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
+    // Shimmer effect
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
 }

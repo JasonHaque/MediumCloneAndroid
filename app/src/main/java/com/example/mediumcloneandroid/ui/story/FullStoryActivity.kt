@@ -33,8 +33,6 @@ class FullStoryActivity : AppCompatActivity() {
 
         title_full_story.text = title
         full_story.text = story
-//
-//        setSupportActionBar(toolbar)
 
     }
 

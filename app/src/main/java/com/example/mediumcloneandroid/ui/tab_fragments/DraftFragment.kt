@@ -17,6 +17,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.adapters.StoryItemAdapter
 import com.example.mediumcloneandroid.data.StoryItem
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_draft.view.*
@@ -31,7 +32,7 @@ class DraftFragment : Fragment() {
     private lateinit var userEmail: String
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var progressBar: ProgressBar
+    private lateinit var progressBar: ShimmerFrameLayout
     private lateinit var refresh: SwipeRefreshLayout
 
     private lateinit var connMgr: ConnectivityManager
@@ -62,6 +63,7 @@ class DraftFragment : Fragment() {
         netInfo = connMgr.activeNetworkInfo
 
         recyclerView.isVisible = false
+        progressBar.startShimmerAnimation()
         progressBar.isVisible = true
 
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -71,6 +73,7 @@ class DraftFragment : Fragment() {
             initLoader()
         } else {
             progressBar.isVisible = false
+            progressBar.stopShimmerAnimation()
             view.internet_draft.isVisible = true
         }
 
@@ -134,6 +137,7 @@ class DraftFragment : Fragment() {
                 }
 
                 recyclerView.adapter = StoryItemAdapter(storyList)
+                progressBar.stopShimmerAnimation()
                 progressBar.isVisible = false
                 recyclerView.isVisible = true
 

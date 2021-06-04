@@ -20,6 +20,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.adapters.StoryItemAdapter
 import com.example.mediumcloneandroid.data.StoryItem
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -32,7 +33,7 @@ class HomeFragment : Fragment() {
     private lateinit var storyList: ArrayList<StoryItem>
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var progressBar: ProgressBar
+    private lateinit var progressBar: ShimmerFrameLayout
     private lateinit var refresh: SwipeRefreshLayout
 
     private lateinit var connMgr: ConnectivityManager
@@ -57,6 +58,7 @@ class HomeFragment : Fragment() {
 
         recyclerView.isVisible = false
         progressBar.isVisible = true
+        progressBar.startShimmerAnimation()
 
         dbRef = FirebaseDatabase.getInstance().getReference("Stories")
         storyList = arrayListOf()
@@ -64,6 +66,7 @@ class HomeFragment : Fragment() {
         if (netInfo != null && netInfo!!.isConnected) {
             initLoader()
         } else {
+            progressBar.stopShimmerAnimation()
             progressBar.isVisible = false
             view.internet_home.isVisible = true
         }
@@ -116,6 +119,7 @@ class HomeFragment : Fragment() {
                 }
 
                 recyclerView.adapter = StoryItemAdapter(storyList)
+                progressBar.stopShimmerAnimation()
                 progressBar.isVisible = false
                 recyclerView.isVisible = true
 
@@ -126,6 +130,16 @@ class HomeFragment : Fragment() {
             }
 
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        progressBar.startShimmerAnimation()
+    }
+
+    override fun onPause() {
+        progressBar.stopShimmerAnimation()
+        super.onPause()
     }
 
 }
