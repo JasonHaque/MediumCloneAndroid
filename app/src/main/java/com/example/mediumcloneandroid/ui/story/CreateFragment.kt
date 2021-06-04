@@ -60,7 +60,6 @@ class CreateFragment : Fragment() {
 
         bindListeners()
 
-
         return view
     }
 

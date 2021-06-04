@@ -2,7 +2,6 @@ package com.example.mediumcloneandroid.ui.home
 
 import android.content.Context
 import android.net.ConnectivityManager
-import android.net.Network
 import android.net.NetworkInfo
 import android.os.Bundle
 import android.util.Log
@@ -10,9 +9,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
-import androidx.core.content.ContextCompat
-import androidx.core.content.getSystemService
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +18,6 @@ import com.example.mediumcloneandroid.adapters.StoryItemAdapter
 import com.example.mediumcloneandroid.data.StoryItem
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlin.collections.ArrayList
 
@@ -33,7 +28,7 @@ class HomeFragment : Fragment() {
     private lateinit var storyList: ArrayList<StoryItem>
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var progressBar: ShimmerFrameLayout
+    private lateinit var shimmerEffect: ShimmerFrameLayout
     private lateinit var refresh: SwipeRefreshLayout
 
     private lateinit var connMgr: ConnectivityManager
@@ -48,7 +43,7 @@ class HomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        progressBar = view.findViewById(R.id.progress_bar_home)
+        shimmerEffect = view.findViewById(R.id.progress_bar_home)
         refresh = view.findViewById(R.id.swipe_to_refresh)
         recyclerView = view.findViewById(R.id.recycler_view)
 
@@ -57,8 +52,8 @@ class HomeFragment : Fragment() {
         netInfo = connMgr.activeNetworkInfo
 
         recyclerView.isVisible = false
-        progressBar.isVisible = true
-        progressBar.startShimmerAnimation()
+        shimmerEffect.isVisible = true
+        shimmerEffect.startShimmerAnimation()
 
         dbRef = FirebaseDatabase.getInstance().getReference("Stories")
         storyList = arrayListOf()
@@ -66,8 +61,8 @@ class HomeFragment : Fragment() {
         if (netInfo != null && netInfo!!.isConnected) {
             initLoader()
         } else {
-            progressBar.stopShimmerAnimation()
-            progressBar.isVisible = false
+            shimmerEffect.stopShimmerAnimation()
+            shimmerEffect.isVisible = false
             view.internet_home.isVisible = true
         }
 
@@ -119,8 +114,8 @@ class HomeFragment : Fragment() {
                 }
 
                 recyclerView.adapter = StoryItemAdapter(storyList)
-                progressBar.stopShimmerAnimation()
-                progressBar.isVisible = false
+                shimmerEffect.stopShimmerAnimation()
+                shimmerEffect.isVisible = false
                 recyclerView.isVisible = true
 
             }
@@ -134,11 +129,11 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        progressBar.startShimmerAnimation()
+        shimmerEffect.startShimmerAnimation()
     }
 
     override fun onPause() {
-        progressBar.stopShimmerAnimation()
+        shimmerEffect.stopShimmerAnimation()
         super.onPause()
     }
 

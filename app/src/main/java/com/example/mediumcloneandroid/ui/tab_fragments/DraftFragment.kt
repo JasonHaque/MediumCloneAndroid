@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +20,6 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_draft.view.*
-import kotlinx.android.synthetic.main.fragment_published.view.*
 
 class DraftFragment : Fragment() {
 
@@ -32,7 +30,7 @@ class DraftFragment : Fragment() {
     private lateinit var userEmail: String
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var progressBar: ShimmerFrameLayout
+    private lateinit var shimmerEffect: ShimmerFrameLayout
     private lateinit var refresh: SwipeRefreshLayout
 
     private lateinit var connMgr: ConnectivityManager
@@ -55,7 +53,7 @@ class DraftFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_draft, container, false)
 
         recyclerView = view.findViewById(R.id.recycler_view_draft)
-        progressBar = view.findViewById(R.id.progress_bar_draft)
+        shimmerEffect = view.findViewById(R.id.progress_bar_draft)
         refresh = view.findViewById(R.id.swipe_to_refresh_draft)
 
         connMgr = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE)
@@ -63,8 +61,8 @@ class DraftFragment : Fragment() {
         netInfo = connMgr.activeNetworkInfo
 
         recyclerView.isVisible = false
-        progressBar.startShimmerAnimation()
-        progressBar.isVisible = true
+        shimmerEffect.startShimmerAnimation()
+        shimmerEffect.isVisible = true
 
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
@@ -72,8 +70,8 @@ class DraftFragment : Fragment() {
         if (netInfo != null && netInfo!!.isConnected) {
             initLoader()
         } else {
-            progressBar.isVisible = false
-            progressBar.stopShimmerAnimation()
+            shimmerEffect.isVisible = false
+            shimmerEffect.stopShimmerAnimation()
             view.internet_draft.isVisible = true
         }
 
@@ -137,8 +135,8 @@ class DraftFragment : Fragment() {
                 }
 
                 recyclerView.adapter = StoryItemAdapter(storyList)
-                progressBar.stopShimmerAnimation()
-                progressBar.isVisible = false
+                shimmerEffect.stopShimmerAnimation()
+                shimmerEffect.isVisible = false
                 recyclerView.isVisible = true
 
             }

@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,7 +30,7 @@ class PublishedFragment : Fragment() {
     private lateinit var userEmail: String
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var progressBar: ShimmerFrameLayout
+    private lateinit var shimmerEffect: ShimmerFrameLayout
     private lateinit var refresh: SwipeRefreshLayout
 
     private lateinit var connMgr: ConnectivityManager
@@ -54,7 +53,7 @@ class PublishedFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_published, container, false)
 
         recyclerView = view.findViewById(R.id.recycler_view_published)
-        progressBar = view.findViewById(R.id.progress_bar_published)
+        shimmerEffect = view.findViewById(R.id.progress_bar_published)
         refresh = view.findViewById(R.id.swipe_to_refresh_published)
 
         connMgr = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE)
@@ -62,8 +61,8 @@ class PublishedFragment : Fragment() {
         netInfo = connMgr.activeNetworkInfo
 
         recyclerView.isVisible = false
-        progressBar.startShimmerAnimation()
-        progressBar.isVisible = true
+        shimmerEffect.startShimmerAnimation()
+        shimmerEffect.isVisible = true
 
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
@@ -71,8 +70,8 @@ class PublishedFragment : Fragment() {
         if (netInfo != null && netInfo!!.isConnected) {
             initLoader()
         } else {
-            progressBar.stopShimmerAnimation()
-            progressBar.isVisible = false
+            shimmerEffect.stopShimmerAnimation()
+            shimmerEffect.isVisible = false
             view.internet_published.isVisible = true
         }
 
@@ -136,8 +135,8 @@ class PublishedFragment : Fragment() {
                 }
 
                 recyclerView.adapter = StoryItemAdapter(storyList)
-                progressBar.stopShimmerAnimation()
-                progressBar.isVisible = false
+                shimmerEffect.stopShimmerAnimation()
+                shimmerEffect.isVisible = false
                 recyclerView.isVisible = true
 
             }
