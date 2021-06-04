@@ -76,8 +76,7 @@ class CreateFragment : Fragment() {
                 }
 
             } else {
-                Toast.makeText(context, "Fill in your Story and Title", Toast.LENGTH_SHORT)
-                    .show()
+                startActivity(Intent(activity, MainUi::class.java))
             }
         }
 
