@@ -19,7 +19,6 @@ import com.example.mediumcloneandroid.data.StoryItem
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlinx.android.synthetic.main.fragment_published.view.*
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
@@ -86,31 +85,46 @@ class HomeFragment : Fragment() {
 
     }
 
+//    private fun refreshData() {
+//        dbRef.child("AllStories").addValueEventListener(object : ValueEventListener {
+//
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//
+//                // Clear list
+//                storyList.clear()
+//
+//                // Add data
+//                for (storySnapshot in snapshot.children) {
+//                    val storyItem = storySnapshot.getValue(StoryItem::class.java)
+//                    storyList.add(storyItem!!)
+//                }
+//
+//                // Setup recycler
+//                recyclerView.adapter?.notifyDataSetChanged()
+//                refresh.isRefreshing = false
+//
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                Log.i(context.toString(), "Something went wrong")
+//            }
+//
+//        })
+//    }
+
     private fun refreshData() {
-        dbRef.child("AllStories").addValueEventListener(object : ValueEventListener {
+        // Initiate animations
+        shimmerEffect.startShimmerAnimation()
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                // Clear list
-                storyList.clear()
-
-                // Add data
-                for (storySnapshot in snapshot.children) {
-                    val storyItem = storySnapshot.getValue(StoryItem::class.java)
-                    storyList.add(storyItem!!)
-                }
-
-                // Setup recycler
-                recyclerView.adapter?.notifyDataSetChanged()
-                refresh.isRefreshing = false
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.i(context.toString(), "Something went wrong")
-            }
-
-        })
+        // Network and views handling
+        if (netInfo != null && netInfo!!.isConnected) {
+            initLoader()
+        } else {
+            shimmerEffect.stopShimmerAnimation()
+            shimmerEffect.isVisible = false
+            refresh.isRefreshing = false
+            view?.internet_home?.isVisible = true
+        }
     }
 
     private fun initLoader() {
@@ -132,6 +146,10 @@ class HomeFragment : Fragment() {
                 shimmerEffect.stopShimmerAnimation()
                 shimmerEffect.isVisible = false
                 recyclerView.isVisible = true
+
+                if (refresh.isRefreshing) {
+                    refresh.isRefreshing = false
+                }
 
             }
 

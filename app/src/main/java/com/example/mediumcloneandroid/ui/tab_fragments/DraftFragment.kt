@@ -88,29 +88,50 @@ class DraftFragment : Fragment() {
 
     }
 
+//    private fun refreshData() {
+//        dbRef.child("Stories").child("Published").addValueEventListener(object : ValueEventListener {
+//
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//
+//                // Clear previously loaded list
+//                storyList.clear()
+//
+//                // Add new list
+//                for (storySnapshot in snapshot.children) {
+//                    val storyItem = storySnapshot.getValue(StoryItem::class.java)
+//                    storyList.add(storyItem!!)
+//                }
+//
+//                // Setup recycler view
+//                recyclerView.adapter?.notifyDataSetChanged()
+//
+//                if (netInfo != null && netInfo!!.isConnected) {
+//
+//                }
+//
+//                refresh.isRefreshing = false
+//
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                Log.i(context.toString(), "Something went wrong")
+//            }
+//        })
+//    }
+
     private fun refreshData() {
-        dbRef.child("Stories").child("Published").addValueEventListener(object : ValueEventListener {
+        // Initiate animations
+        shimmerEffect.startShimmerAnimation()
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                // Clear previously loaded list
-                storyList.clear()
-
-                // Add new list
-                for (storySnapshot in snapshot.children) {
-                    val storyItem = storySnapshot.getValue(StoryItem::class.java)
-                    storyList.add(storyItem!!)
-                }
-
-                // Setup recycler view
-                recyclerView.adapter?.notifyDataSetChanged()
-                refresh.isRefreshing = false
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.i(context.toString(), "Something went wrong")
-            }
-        })
+        // Network and views handling
+        if (netInfo != null && netInfo!!.isConnected) {
+            initLoader()
+        } else {
+            shimmerEffect.stopShimmerAnimation()
+            shimmerEffect.isVisible = false
+            refresh.isRefreshing = false
+            view?.internet_draft?.isVisible = true
+        }
     }
 
     // Initiate email for db
@@ -147,6 +168,11 @@ class DraftFragment : Fragment() {
                 shimmerEffect.stopShimmerAnimation()
                 shimmerEffect.isVisible = false
                 recyclerView.isVisible = true
+
+                if (refresh.isRefreshing) {
+                    refresh.isRefreshing = false
+                }
+
             }
 
             override fun onCancelled(error: DatabaseError) {
