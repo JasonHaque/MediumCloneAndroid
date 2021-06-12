@@ -19,6 +19,7 @@ import com.example.mediumcloneandroid.data.StoryItem
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.fragment_published.view.*
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
@@ -43,21 +44,27 @@ class HomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
+        // Init
         shimmerEffect = view.findViewById(R.id.progress_bar_home)
         refresh = view.findViewById(R.id.swipe_to_refresh)
         recyclerView = view.findViewById(R.id.recycler_view)
 
+        storyList = arrayListOf()
+        dbRef = FirebaseDatabase.getInstance().getReference("Stories")
+
+        // Recycler view setup
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.setHasFixedSize(true)
+
+        // Network Connectivity
         connMgr = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE)
                 as ConnectivityManager
         netInfo = connMgr.activeNetworkInfo
 
-        recyclerView.isVisible = false
-        shimmerEffect.isVisible = true
+        // Initiate animations
         shimmerEffect.startShimmerAnimation()
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Stories")
-        storyList = arrayListOf()
-
+        // Network and views init
         if (netInfo != null && netInfo!!.isConnected) {
             initLoader()
         } else {
@@ -65,10 +72,6 @@ class HomeFragment : Fragment() {
             shimmerEffect.isVisible = false
             view.internet_home.isVisible = true
         }
-
-
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.setHasFixedSize(true)
 
         bindListeners()
 
@@ -85,34 +88,46 @@ class HomeFragment : Fragment() {
 
     private fun refreshData() {
         dbRef.child("AllStories").addValueEventListener(object : ValueEventListener {
+
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                // Clear list
                 storyList.clear()
 
+                // Add data
                 for (storySnapshot in snapshot.children) {
                     val storyItem = storySnapshot.getValue(StoryItem::class.java)
                     storyList.add(storyItem!!)
                 }
 
+                // Setup recycler
                 recyclerView.adapter?.notifyDataSetChanged()
                 refresh.isRefreshing = false
+
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Log.i(context.toString(), "Something went wrong")
             }
+
         })
     }
 
     private fun initLoader() {
         dbRef.child("AllStories").addValueEventListener(object : ValueEventListener {
+
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                // Clear list
                 storyList.clear()
 
+                // Add data
                 for (storySnapshot in snapshot.children) {
                     val storyItem = storySnapshot.getValue(StoryItem::class.java)
                     storyList.add(storyItem!!)
                 }
 
+                // setup recycler and animation handling
                 recyclerView.adapter = StoryItemAdapter(storyList)
                 shimmerEffect.stopShimmerAnimation()
                 shimmerEffect.isVisible = false

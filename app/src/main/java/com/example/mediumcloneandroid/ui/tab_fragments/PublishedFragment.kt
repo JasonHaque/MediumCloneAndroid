@@ -24,19 +24,16 @@ import kotlinx.android.synthetic.main.fragment_published.view.*
 class PublishedFragment : Fragment() {
 
     private lateinit var dbRef: DatabaseReference
-
     private lateinit var storyList: ArrayList<StoryItem>
-
     private lateinit var userEmail: String
 
     private lateinit var recyclerView: RecyclerView
+
     private lateinit var shimmerEffect: ShimmerFrameLayout
     private lateinit var refresh: SwipeRefreshLayout
 
     private lateinit var connMgr: ConnectivityManager
-
     private var netInfo: NetworkInfo? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,21 +49,24 @@ class PublishedFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_published, container, false)
 
+        // Store in global variables
         recyclerView = view.findViewById(R.id.recycler_view_published)
         shimmerEffect = view.findViewById(R.id.progress_bar_published)
         refresh = view.findViewById(R.id.swipe_to_refresh_published)
 
+        // Recycler view setup
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.setHasFixedSize(true)
+
+        // Network Connectivity
         connMgr = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE)
                 as ConnectivityManager
         netInfo = connMgr.activeNetworkInfo
 
-        recyclerView.isVisible = false
+        // Initiate animations
         shimmerEffect.startShimmerAnimation()
-        shimmerEffect.isVisible = true
 
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.setHasFixedSize(true)
-
+        // Network and views init
         if (netInfo != null && netInfo!!.isConnected) {
             initLoader()
         } else {
@@ -90,26 +90,30 @@ class PublishedFragment : Fragment() {
 
     private fun refreshData() {
         dbRef.child("Stories").child("Published").addValueEventListener(object : ValueEventListener {
+
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                // Clear previously loaded list
                 storyList.clear()
 
+                // Add new list
                 for (storySnapshot in snapshot.children) {
                     val storyItem = storySnapshot.getValue(StoryItem::class.java)
                     storyList.add(storyItem!!)
                 }
 
+                // Setup recycler view
                 recyclerView.adapter?.notifyDataSetChanged()
                 refresh.isRefreshing = false
-
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Log.i(context.toString(), "Something went wrong")
             }
-
         })
     }
 
+    // Initiate email for db
     private fun getUserEmail() {
         val email = FirebaseAuth.getInstance().currentUser?.email
         if (email != null) {
@@ -126,19 +130,22 @@ class PublishedFragment : Fragment() {
 
     private fun initLoader() {
         dbRef.child("Stories").child("Published").addValueEventListener(object : ValueEventListener {
+
             override fun onDataChange(snapshot: DataSnapshot) {
+                // Clear list
                 storyList.clear()
 
+                // Add new data
                 for (storySnapshot in snapshot.children) {
                     val storyItem = storySnapshot.getValue(StoryItem::class.java)
                     storyList.add(storyItem!!)
                 }
 
+                // Setup and animation handling
                 recyclerView.adapter = StoryItemAdapter(storyList)
                 shimmerEffect.stopShimmerAnimation()
                 shimmerEffect.isVisible = false
                 recyclerView.isVisible = true
-
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -146,6 +153,16 @@ class PublishedFragment : Fragment() {
             }
 
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        shimmerEffect.startShimmerAnimation()
+    }
+
+    override fun onPause() {
+        shimmerEffect.stopShimmerAnimation()
+        super.onPause()
     }
 
 }
