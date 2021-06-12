@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -88,51 +89,40 @@ class DraftFragment : Fragment() {
 
     }
 
-//    private fun refreshData() {
-//        dbRef.child("Stories").child("Published").addValueEventListener(object : ValueEventListener {
-//
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//
-//                // Clear previously loaded list
-//                storyList.clear()
-//
-//                // Add new list
-//                for (storySnapshot in snapshot.children) {
-//                    val storyItem = storySnapshot.getValue(StoryItem::class.java)
-//                    storyList.add(storyItem!!)
-//                }
-//
-//                // Setup recycler view
-//                recyclerView.adapter?.notifyDataSetChanged()
-//
-//                if (netInfo != null && netInfo!!.isConnected) {
-//
-//                }
-//
-//                refresh.isRefreshing = false
-//
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                Log.i(context.toString(), "Something went wrong")
-//            }
-//        })
-//    }
-
     private fun refreshData() {
-        // Initiate animations
-        shimmerEffect.startShimmerAnimation()
+        dbRef.child("Stories").child("NotPublished").addValueEventListener(object : ValueEventListener {
 
-        // Network and views handling
-        if (netInfo != null && netInfo!!.isConnected) {
-            initLoader()
-        } else {
-            shimmerEffect.stopShimmerAnimation()
-            shimmerEffect.isVisible = false
-            refresh.isRefreshing = false
-            view?.internet_draft?.isVisible = true
-        }
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                // Clear previously loaded list
+                storyList.clear()
+
+                // Add new list
+                for (storySnapshot in snapshot.children) {
+                    val storyItem = storySnapshot.getValue(StoryItem::class.java)
+                    storyList.add(storyItem!!)
+                }
+
+                // Network and views handling
+                if (netInfo != null && netInfo!!.isConnected) {
+
+                    recyclerView.adapter?.notifyDataSetChanged()
+                    refresh.isRefreshing = false
+
+                } else {
+                    Toast.makeText(activity, "No Internet Connection", Toast.LENGTH_SHORT)
+                        .show()
+                    refresh.isRefreshing = false
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.i(context.toString(), "Something went wrong")
+            }
+        })
     }
+
 
     // Initiate email for db
     private fun getUserEmail() {
