@@ -23,9 +23,7 @@ class MyStoryFragment : Fragment() {
         val tabLayout = view.findViewById<TabLayout>(R.id.tabLayout)
         val viewPager = view.findViewById<ViewPager2>(R.id.viewPager)
 
-        val adapter = SectionPageAdapter(requireActivity().supportFragmentManager, lifecycle)
-
-        viewPager.adapter = adapter
+        viewPager.adapter = SectionPageAdapter(requireActivity().supportFragmentManager, lifecycle)
 
         TabLayoutMediator(tabLayout, viewPager) {tab, position ->
             when(position) {

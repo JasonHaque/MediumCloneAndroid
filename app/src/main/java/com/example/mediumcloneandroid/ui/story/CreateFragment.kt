@@ -37,7 +37,6 @@ class CreateFragment : Fragment() {
     private lateinit var storyTitle: String
     private lateinit var currentDate: String
     private lateinit var image: String
-
     private lateinit var email: String
 
     private lateinit var connMgr: ConnectivityManager
@@ -64,6 +63,7 @@ class CreateFragment : Fragment() {
     }
 
     private fun bindListeners() {
+
         buttonDone.setOnClickListener {
             if (title_story_edit_text.text.toString() != "" || story_edit_text.text.toString() != "") {
 
