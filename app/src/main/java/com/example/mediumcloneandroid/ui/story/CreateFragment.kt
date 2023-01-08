@@ -77,6 +77,7 @@ class CreateFragment : Fragment() {
 
             } else {
                 startActivity(Intent(activity, MainUi::class.java))
+                requireActivity().finish()
             }
         }
 
@@ -145,6 +146,7 @@ class CreateFragment : Fragment() {
                             Toast.makeText(context, "Story saved on Draft", Toast.LENGTH_SHORT).show()
                         }
                         startActivity(Intent(activity, MainUi::class.java))
+                        requireActivity().finish()
                     }.addOnFailureListener {
                         Toast.makeText(context, "Could not write data", Toast.LENGTH_SHORT).show()
                     }
