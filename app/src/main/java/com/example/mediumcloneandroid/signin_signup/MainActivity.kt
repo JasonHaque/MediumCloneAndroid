@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import androidx.annotation.CallSuper
+import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mediumcloneandroid.R
 import com.example.mediumcloneandroid.data.UserData

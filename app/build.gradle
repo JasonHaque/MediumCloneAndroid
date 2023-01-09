@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
     buildToolsVersion "30.0.2"
 
     compileOptions {
@@ -21,7 +21,7 @@ android {
     defaultConfig {
         applicationId "com.example.mediumcloneandroid"
         minSdkVersion 22
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
@@ -60,10 +60,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // Firebase
-    implementation 'com.google.firebase:firebase-auth:21.0.1'
-    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.android.gms:play-services-auth:20.4.0'
     implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
-    implementation 'com.google.firebase:firebase-database:20.0.0'
+    implementation 'com.google.firebase:firebase-database:20.1.0'
     implementation platform('com.google.firebase:firebase-bom:26.1.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
